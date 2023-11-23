@@ -1,0 +1,29 @@
+/* Header.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap');
+
+.header {
+  background-color: #17699d; /* Customize the background color */
+  padding: 5px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  margin-bottom: 25px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  /* Add your title styles here */
+  font-size: 22px; /* Customize the font size */
+  font-weight: normal;
+  margin-left: 10px;
+  color: rgb(255, 255, 255); /* Customize the text color */
+  height: 4vh; 
+  font-family: "Roboto Slab", Arial, sans-serif;
+}
+
+.header i {
+  margin-left: 15px;
+  color: white;
+}

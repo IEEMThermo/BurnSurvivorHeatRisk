@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Header from './Components/Header';
+import Photo from './Components/Photo';
+import Footer from './Components/Footer';
+import Calculate from './Input';
+import ReactDOM from 'react-dom';
+//import YourComponent from './DropdownContainer';
+import { ResultColorProvider } from './Components/ResultColorContext';
 
-function App() {
+function MainApp() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <Header />
+        <Photo />
+        <ResultColorProvider>
+          <Calculate />
+        </ResultColorProvider>
+        <Footer />
     </div>
   );
 }
 
-export default App;
+ReactDOM.render(
+  <React.StrictMode>
+    <MainApp />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+export default MainApp;

@@ -1,0 +1,306 @@
+/* Default styles for input boxes */
+
+.inputBox {
+  max-width: 900px;
+  flex-direction: column; /* Stack elements vertically */
+  margin: 0 auto;
+
+}
+
+.search-container,
+.met_container,
+.clo_container,
+.burnsa_container,
+.duration_container,
+.shade_container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; /* Vertically center align all content */
+  padding: 15px;
+}
+
+
+input[type="text"],
+  select {
+    width: 650px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background: transparent;
+    cursor: pointer;
+    margin-left: 10px; /* Adjust the margin to control spacing between input and label */
+    color: rgb(104, 99, 99);
+}
+
+/* Style the icon */
+.search-container label,
+.met_container label,
+.clo_container label,
+.burnsa_container label,
+.duration_container label,
+.shade_container label {
+  width: 150px; /* Adjust label width as needed */
+}
+
+/* Style the icon */
+.search-container i.fa-solid,
+.met_container i.fa-solid,
+.clo_container i.fa-solid,
+.burnsa_container i.fa-solid,
+.duration_container i.fa-solid,
+.shade_container i.fa-solid {
+  right: 35px;
+  color: #555; /* Icon color */
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.met-help-button,
+.clo-help-button,
+.burnsurface-help-button {
+  position: relative;
+  background-color: #17699d;
+  color: #f4f4f4;
+  font-size: 20px;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* Media query for screens smaller than 450px */
+@media (max-width: 900px) {
+  /* Adjust input width and padding for smaller screens */
+  input[type="text"],
+  select{
+      width: 80%; /* Take up the full available width */
+      padding: 10px;
+  }
+
+  /* Adjust the icon position for smaller screens */
+  .city_container i.fa,
+  .met_container i.fa,
+  .clo_container i.fa,
+  .burnsa_container i.fa,
+  .duration_container i.fa,
+  .shade_container i.fa {
+      right: 15px; /* Adjust the position of the icon */
+  }
+
+  .met-help-button,
+  .clo-help-button,
+  .burnsurface-help-button {  
+    right: 40px;
+  }
+
+}
+
+
+
+.calculate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh; /* Center vertically within the viewport height */
+  margin-bottom: 20px;
+  text-align: center; /* Center its child elements horizontally */
+}
+
+.calculate-button {
+  background-color: rgb(25, 95, 152);
+  color: white;
+  font-size: 18px;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.calculate-button:hover {
+  background-color: rgb(16, 75, 163);
+  transform: scale(1.1);
+}
+
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-box {
+  margin-top: 20px;
+  text-align: center;
+  padding: 15px; /* Adjust padding as needed */
+  border-radius: 10px; /* Rounded corners */
+  background-color: #ffffff; /* Background color for the result box */
+}
+
+.Red{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 650px;
+  margin-top: 20px;
+  justify-content: center;
+  padding: 15px; /* Adjust padding as needed */
+  border-radius: 5px; /* Rounded corners */
+  border: 2px solid rgb(255, 255, 255);
+  background-color: #b83c55; /* Background color for the result box */
+  color: white;
+  font-size: 25px;
+  height: 15vh;
+}
+
+.Orange{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 650px;
+  margin-top: 20px;
+  justify-content: center;
+  padding: 15px; /* Adjust padding as needed */
+  border-radius: 5px; /* Rounded corners */
+  border: 2px solid rgb(253, 253, 253);
+  background-color: #f17d3f; /* Background color for the result box */
+  color: white;
+  font-size: 25px;
+  height: 15vh;
+}
+
+.Yellow{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 650px;
+  margin-top: 20px;
+  justify-content: center;
+  padding: 15px; /* Adjust padding as needed */
+  border-radius: 5px; /* Rounded corners */
+  border: 2px solid rgb(255, 255, 255);
+  background-color: #ddc53a; /* Background color for the result box */
+  font-size: 25px;
+  height: 15vh;
+}
+
+.Green{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 650px;
+  margin-top: 20px;
+  justify-content: center;
+  padding: 15px; /* Adjust padding as needed */
+  height: 15vh;
+  border-radius: 5px; /* Rounded corners */
+  border: 2px solid rgb(255, 255, 255);
+  background-color: #7bc774; /* Background color for 
+  the result box */
+  color: white;
+  font-size: 25px;
+}
+
+/* Style the container for search results */
+.search-results {
+  width: 640px;
+  margin: 0 auto;
+  margin-left: 20%;
+  top: 100%; /* Position below the input field */
+  max-height: 300px; /* Set a max height for results */
+  overflow-y: auto; /* Add scroll if results exceed max height */
+  background: #fff;
+  border: 1px solid black;
+  border-top: none;
+  border-radius: 0 0 8px 8px; /* Rounded corners for bottom */
+  z-index: 1; /* Ensure results are on top of other content */
+}
+
+/* Remove the dots before the city names in the search results */
+.search-results ul {
+  list-style: none; /* Remove list bullets/dots */
+  border-bottom:1px rgb(104, 99, 99);
+}
+
+/* Add styles for individual search result items */
+.search-results li {
+  font-size: 15px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Add hover effect for search result items */
+.search-results li:hover {
+  background-color: #007bff;
+}
+
+.graph-container {
+  width: 780px;
+  margin: 0 auto; /* Center horizontally */
+  padding: 20px;
+  text-align: center; /* Center the graph inside the container */
+}
+
+.graph-axis {
+  /* Style the graph axes, labels, or any other graph-related elements */
+  color: #333; /* Text color for the axes */
+}
+
+/* Media query for screens smaller than a certain width */
+@media (max-width: 800px) {
+  .graph-container {
+    width: 90%; /* Adjust the width for smaller screens */
+  }
+
+  .result-box,
+  .Green,
+  .Orange,
+  .Yellow,
+  .Red {
+    width: 60%;
+  }
+
+}
+
+.forecast-title {
+  text-align: center; /* Center-align the text */
+  font-size: 24px; /* Adjust the font size as needed */
+}
+
+.legend {
+  text-align: center;
+  margin-top: 10px; /* Adjust the margin as needed */
+  margin-bottom: 15px;
+
+}
+
+.legend-color {
+  display: inline-block;
+  width: 10px; /* Adjust the size of the circle */
+  height: 10px; /* Adjust the size of the circle */
+  border-radius: 50%; /* Makes it a circle */
+  margin-right: 15px; /* Adjust the spacing between circles */
+  margin-left: 15px;
+}
+
+/* Define the colors for the legend circles */
+.green {
+  background-color: #7bc774;
+}
+
+.yellow {
+  background-color: #ddc53a;
+}
+
+.orange {
+  background-color: #f17d3f;
+}
+
+.red {
+  background-color: #b83c55;
+}

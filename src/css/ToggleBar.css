@@ -1,0 +1,74 @@
+/* ToggleBar.css */
+
+
+.toggle-bar {
+  width: 750px;
+  margin: 30px auto;
+}
+
+.toggle-bar button {
+  width: 750px;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 2px solid rgb(204, 204, 204);
+  padding: 20px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Style the container for the detailed descriptions */
+.toggle-bar .detailed-descriptions {
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 2px solid rgb(204, 204, 204);
+  padding: 20px 20px;
+  border-radius: 6px;
+  width: 750px; /* Adjust the width to match the button */
+  justify-content: center; /* Adjust if needed */
+  text-align: left;
+  transition: transform 0.9s ease; /* Add a smooth transition for rotation */
+
+}
+
+/* Hover effect for the button */
+.toggle-bar button:hover {
+  background-color: #708be48c;
+}
+
+/* Style the down icon */
+.icon {
+  margin-left: auto;
+  transition: transform 0.5s ease; /* Add a smooth transition for rotation */
+}
+
+/* Rotate the icon when the button is expanded */
+.icon.expanded {
+  transform: rotate(180deg);
+}
+
+/* Expanded button styles */
+.toggle-bar button.expanded {
+  /* Adjust the button height to accommodate the description */
+  height: auto;
+}
+
+/* Style the detailed descriptions section inside the button */
+.toggle-bar button.expanded .detailed-descriptions {
+  visibility: visible;
+  transition: all 0.7s ease-in-out;
+}
+
+/* Media query for screens smaller than a certain width */
+@media (max-width: 800px) {
+  .toggle-bar button {
+    width: 60%; /* Adjust the width for smaller screens */
+  }
+
+  .toggle-bar .detailed-descriptions{
+    width: 60%;
+  }
+
+}

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 
+//Function that calculates t_core
 export function two_nodes_optimized(
     tdb,
     tr,
@@ -287,6 +288,7 @@ export function two_nodes_optimized(
     return t_core;
 }
 
+//Function that casts parameters and calls two_nodes_optimized 
 export async function two_nodes(zipcode, met, clo, burn_surface, length_time_simulation, shade_sun, wme=0,body_surface_area=1.7,p_atmospheric=101325,body_position="standing",max_skin_blood_flow=90){
     //cast variables
     met = parseFloat(met);
@@ -342,6 +344,7 @@ export async function two_nodes(zipcode, met, clo, burn_surface, length_time_sim
     }
 }
 
+//Function that gets the calculates the forecasted risk 
 export function two_nodes_forecast(array, met, clo, burn_surface, length_time_simulation, shade_sun, wme=0,body_surface_area=1.7,p_atmospheric=101325,body_position="standing",max_skin_blood_flow=90){
     //cast variables
     met = parseFloat(met);
@@ -404,6 +407,7 @@ export function two_nodes_forecast(array, met, clo, burn_surface, length_time_si
 }
 
 
+//Function that calls the API and fetches the tdb, tr, rh, and v values
 export async function fetchWeatherData(zipcode) {
   const BASE_URL = "http://api.openweathermap.org/data/2.5/weather?";
   const API_KEY = process.env.REACT_APP_API_KEY;
@@ -430,6 +434,7 @@ export async function fetchWeatherData(zipcode) {
     });
 }
 
+//Function that calls API and fetches the tdb, tr, rh, and v values for forecasted risk array
 export async function fetchForecastData(zipcode) {
     const BASE_URL = "http://api.openweathermap.org/data/2.5/forecast?";
     const API_KEY = process.env.REACT_APP_API_KEY;
@@ -464,8 +469,7 @@ export async function fetchForecastData(zipcode) {
       });
   }
   
-  
-
+//Function that gets result color based off of t_core value
 export function getColor(result) {
     let resultColor;
     if (result <= 37.5) {

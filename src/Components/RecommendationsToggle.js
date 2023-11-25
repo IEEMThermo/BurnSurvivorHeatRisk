@@ -4,8 +4,6 @@ import '../css/ToggleBar.css';
 
 function RecommendationsToggle() {
   const { resultColor } = useResultColor();
-
-  // Sample recommendations data
   const recommendations = {
     'Green: \n Exercise is safe.': [
       'Maintaining hydration through regular fluid consumption and modifying clothing is still a simple, yet effective, way of keeping cool and preserving health and performance during the summer months.',
@@ -15,14 +13,12 @@ function RecommendationsToggle() {
       '• Where possible, select lightweight and breathable clothing with extra ventilation.',
       '• Remove unnecessary clothing/equipment and/or excess clothing layers.',
       '• Reduce the amount of skin that is covered by clothing – this will help increase your sweat evaporation, which will help you dissipate heat.',
-      // You can add more recommendations here if needed
     ],
     'Red: \n Unsafe exposure. Extreme Caution.': [
       'Exercise/play should be suspended. If play has commenced, then all activities should be stopped as soon as possible.',
       'You should:',
       '• All players should seek shade or cool refuge in an air-conditioned space if available.',
       '• Active cooling strategies should be applied.',
-      // You can add more recommendations here if needed
     ],
     'Yellow: \n Caution, regularly hydrate.': [
       'Increasing the frequency and/or duration of your rest breaks during exercise or sporting activities is an effective way of reducing your risk for heat illness even if minimal resources are available.',
@@ -32,7 +28,6 @@ function RecommendationsToggle() {
       '• Implement additional rest breaks that are not normally scheduled to occur. For example, 3 to 5-minute “quarter-time” breaks can be introduced mid-way through each half of a football or rugby match, or an extended 10-minute drinks break can be introduced every hour of a cricket match or after the second set of a tennis match.',
       '• For sports with continuous play without any scheduled breaks, courses or play duration can be shortened.',
       '• During all breaks in play or practice, everyone should seek shade – if natural shade is not available, portable sun shelters should be provided, and water freely available.',
-      // You can add more recommendations here if needed
     ],
     'Orange: \n Strong caution, regularly drink fluids, take frequent rest breaks, consider active cooling i.e., water spray.': [
       'Active cooling strategies should be applied during scheduled and additional rest breaks, or before and during activity if play is continuous. Below are strategies that have been shown to effectively reduce body temperature. The suitability and feasibility of each strategy will depend on the type of sport or exercise you are performing.',
@@ -42,7 +37,6 @@ function RecommendationsToggle() {
       '• Perform water dousing – wetting your skin with cool water using a sponge or a spray bottle helps increase evaporation, which is the most effective cooling mechanism in the heat.',
       '• Use ice packs/towels – placing an ice pack or damp towel filled with crushed ice around your neck.',
       '• Consider electric (misting) fans – outdoor fans can help keep your body cool, especially when combined with a water misting system.',
-      // You can add more recommendations here if needed
     ],
   };
 

@@ -4,7 +4,7 @@ import './css/Input.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useResultColor } from './Components/ResultColorContext';
 import RecommendationsToggle from './Components/RecommendationsToggle';
-import './css/ToggleBar.css';
+//import './css/ToggleBar.css';
 import { Collapse } from 'react-collapse';
 import axios from 'axios';
 import HelpPopup from './Components/HelpPopup';
@@ -12,16 +12,16 @@ import HelpPopupClothing from './Components/HelpPopupClothing';
 import { Line } from 'react-chartjs-2';
 import {Chart, registerables} from 'chart.js'; 
 
-
-
-
+//Function that gets city based off of user input
 async function getCityName(zipcode){
   const zipcodeStr = String(zipcode);
 
+  //open weather api call
   const CITY_BASE_URL = "http://api.openweathermap.org/geo/1.0/direct?q=";
   const API_KEY = process.env.REACT_APP_API_KEY;
   const city_url =  `${CITY_BASE_URL}${zipcodeStr}&limit=5&appid=${API_KEY}`;
 
+  //query search results
   try {
     const response = await axios.get(city_url);
     const data = response.data;
@@ -42,6 +42,7 @@ async function getCityName(zipcode){
   }
 }
 
+//Function responsible for displaying all the input boxes, and calculate functions
 function Calculate() {
   // input value state variables
   const [value2, setValue2] = useState('');
@@ -134,13 +135,12 @@ function Calculate() {
   //cursor 
   const cursorStyle = { cursor: 'pointer'};
 
-  // Update the data for the green, yellow, orange, and red portions
+  // Update the data for the green, yellow, orange, and red portions on the graph
   const scaledGreen = Array(8).fill(37.5);
   const scaledYellow = Array(8).fill(38);
   const scaledOrange = Array(8).fill(38.5);
   const scaledRed = Array(8).fill(39);
   let dataset = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]];
-
 
   //handle search bar input change
   const handleInputChange = (e) => {
@@ -185,19 +185,22 @@ function Calculate() {
     setIsExpanded(!isExpanded);
   };
 
-  // Define functions to show/hide help pop-ups
+  //Function to show/hide the activity level help button pop up
   const toggleHelpMet = () => {
     setShowHelpMet(!showHelpMet);
   };
 
+  //Function to show/hide the clothing level help button pop up
   const toggleHelpClo = () => {
     setShowHelpClo(!showHelpClo);
   };
 
+  //Function to show/hide the burn surface area help pop up
   const toggleHelpBurnSurface = () => {
     setShowHelpBurnSurface(!showHelpBurnSurface);
   };
 
+  //Function that calls two_nodes, performs the calculation, and sets the result
   const calculate = async () => {
     let resultNum = await two_nodes(coord, value2, value3, value4, value5, value6);
     let resultColor = getColor(resultNum);
@@ -207,6 +210,7 @@ function Calculate() {
     let textColor = "";
     let resultText = "";
     
+    //Set result based off of color range
     switch(resultColor) {
       case 'Green: \n Exercise is safe.':
         textColor = "Green";
@@ -239,17 +243,16 @@ function Calculate() {
     }
   };
 
-    //calculates t_core over time and generates graph
-  //react function component
+  //Function that calculates t_core over time and generates graph
   const GraphCalculate = async () => {
     //create y and x parameters for graph
     let forecastParameters = new Array (4);
     let forecastResult = new Array(8);
     const times = new Array(8);
     
+    //call the open weather api
     try{
       let forecastData = await fetchForecastData(coord);
-      console.log(forecastData);
 
       for (let i = 0; i < 8; i++){
         for (let j = 0; j < 4; j++){
@@ -257,7 +260,7 @@ function Calculate() {
         }
 
         times[i] = forecastData[i][4];
-        //get t_core for ith hour
+        //get t_core for the ith hour
         forecastResult[i] = two_nodes_forecast(forecastParameters, value2, value3, value4, value5, value6);
       }
 
@@ -268,11 +271,12 @@ function Calculate() {
         if(hour >=24){
           hour = hour - 24;
         }
-            // Convert to 12-hour format and add AM/PM
+        
+      // Convert to 12-hour format and add AM/PM
       let displayHour = hour % 12 || 12;
       let ampm = hour < 12 ? "AM" : "PM";
     
-      timesArray[i] = `${displayHour}:${"00"}:${"00"} ${ampm}`;
+      timesArray[i] = `${displayHour}:${"00"} ${ampm}`;
         hour = hour + 3;
       }
 
@@ -285,19 +289,16 @@ function Calculate() {
   };
 
   // Create the chart data
-
   let chart = {
 
     labels: label,
     datasets: [
-
       {
         label: 't_core',
         data: data,
         borderColor: 'rgba(0,0,0,1)',
         backgroundColor: 'rgba(0, 0, 0, 1)', //
       },
-
       //green (less than or equal to 37.5)
       {
         data: scaledGreen,
@@ -305,7 +306,6 @@ function Calculate() {
         backgroundColor: '#7bc774', //
         pointRadius: 0,
       },
-
       //yellow (37.51 - 37.99)
       {
         data: scaledYellow,
@@ -313,7 +313,6 @@ function Calculate() {
         backgroundColor: '#ddc53a', //
         pointRadius: 0,
       },
-
       //orange (38 - 38.49)
       {
         data: scaledOrange,
@@ -321,7 +320,6 @@ function Calculate() {
         backgroundColor: '#f17d3f', //
         pointRadius: 0,
       },
-
       //red (38.5)
       {
         data: scaledRed,
@@ -330,10 +328,10 @@ function Calculate() {
         pointRadius: 0,
       },
     ],
-
   };
   Chart.register(...registerables);
 
+  //When user presses the "calculate" button
   const handleButtonClick = () => {
     // Check if a city has not been selected
     if (!coord) {
@@ -382,7 +380,6 @@ function Calculate() {
       <div className='inputBox'>
         <div className='city_container'>
           <div style={cursorStyle}>
-            {/* Move the SearchBar component here and handle onFocus */}
             <div className="search-container">
             <label htmlFor="city_input"> City:</label>
               <input
@@ -417,7 +414,7 @@ function Calculate() {
           </div>
         </div>
 
-          
+      {/*Metabolic Rate input*/}
       <div className='met_container'>
         <label htmlFor="metabolic_rate_input"> Activity Level:</label>
         <select
@@ -436,6 +433,7 @@ function Calculate() {
       </div>
       {showHelpMet && <HelpPopup content={helpTextMet} onClose={toggleHelpMet} />}
 
+      {/*Clothing input */}
       <div className='clo_container'>
         <label htmlFor="clothing_input"> Clothing:</label>
         <select
@@ -454,6 +452,7 @@ function Calculate() {
       </div>
       {showHelpClo && <HelpPopupClothing content={helpTextClo} onClose={toggleHelpClo} />}
 
+      {/*Burn Surface Area input*/}
       <div className='burnsa_container'>
         <label htmlFor="burn_surface_area_input">Burn Surface Area: </label>
         <input
@@ -468,6 +467,7 @@ function Calculate() {
       </div>
       {showHelpBurnSurface && <HelpPopup content={helpTextBurnSurface} onClose={toggleHelpBurnSurface} />}
 
+       {/*Duration input*/}
       <div className='duration_container'>
         <label htmlFor="duration_input"> Duration of Activity: </label>
         <input
@@ -480,6 +480,7 @@ function Calculate() {
          <i className="fa-solid fa-clock"></i>
       </div>
 
+      {/*Shade/Sun/Indoors input*/}
       <div className='shade_container'>
         <label htmlFor="sun_exposure_input"> Activity Environment: </label>
         <select
@@ -498,6 +499,7 @@ function Calculate() {
 
     </div>
  
+      {/*Calculate  button*/}
       <div className='calculate'>
         <button className='calculate-button' onClick={handleButtonClick}>Calculate</button>
       </div>
@@ -519,7 +521,7 @@ function Calculate() {
         </div>
       </div>
 
-
+       {/*Toggle Bar for detailed descriptions*/}
       <div>
         <div className='toggle-bar'>
           <button className={`toggle-button ${isExpanded ? 'expanded' : ''}`} onClick={handleToggle}> Detailed cooling recommendations: 
@@ -533,8 +535,7 @@ function Calculate() {
         </div>
       </div>
 
-      
-
+      {/*Forecasted Risk Graph */}
       {isDivVisible && (
         <div className="graph-container">
           <h2 className="forecast-title">Forecasted risk for today</h2>
@@ -565,7 +566,6 @@ function Calculate() {
         </div>
       )}
       
-
   </div>
   );
 }

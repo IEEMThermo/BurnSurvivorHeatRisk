@@ -26,26 +26,26 @@
 
 /* Change link color on hover */
 .footer a.website-link:hover {
-  color: #ff5733; /* Orange color on hover */
+  color: #ff5733; 
 }
 
 /* Style for the website link */
 .footer a.website-link {
   color: #fff;
-  font-size: 13px; /* Adjust the font size to make it small*/
+  font-size: 13px; 
   text-decoration: none;
   align-items: center;
-  margin-top: 5px; /* Add some top margin to separate it from other content */
+  margin-top: 5px; 
 }
 
 .footer-container {
-  position: relative; /* Create a positioning context for child elements */
+  position: relative; 
 }
 
 .disclaimer-box {
-  background-color: #f0f0f0; /* Set a background color for the disclaimer box */
-  text-align: center; /* Center-align the text */
-  padding: 10px; /* Add some padding for spacing */
-  font-size: 12px; /* Adjust the font size for small print */
+  background-color: #f0f0f0; 
+  text-align: center; 
+  padding: 10px; 
+  font-size: 12px; 
   bottom: 10px;
 }

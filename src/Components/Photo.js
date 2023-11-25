@@ -1,15 +1,17 @@
 import React from 'react';
-//import './Title.css'; // Import your CSS file
 import logo from '../images/logo.jpeg';
+import '../css/Input.css';
 
 function Photo() {
   return (
+    <div className='photo'>
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '55px', marginBottom: '55px'}}>
       <img
         src={logo}
         alt="Image Description"
-        style={{ width: '50%', height: '100px' }}
+        style={{ width: '55%', height: '120px' }}
       />
+      </div>
     </div>
   );
 }

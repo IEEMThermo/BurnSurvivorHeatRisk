@@ -5,7 +5,6 @@ import Photo from './Components/Photo';
 import Footer from './Components/Footer';
 import Calculate from './Input';
 import ReactDOM from 'react-dom';
-//import YourComponent from './DropdownContainer';
 import { ResultColorProvider } from './Components/ResultColorContext';
 
 function MainApp() {

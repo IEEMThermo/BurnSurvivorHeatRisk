@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap');
 
 .header {
-  background-color: #17699d; /* Customize the background color */
+  background-color: #17699d;
   padding: 5px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); 
   margin-bottom: 25px;
 }
 
@@ -14,11 +14,10 @@
 }
 
 .header-title {
-  /* Add your title styles here */
-  font-size: 22px; /* Customize the font size */
+  font-size: 22px;
   font-weight: normal;
   margin-left: 10px;
-  color: rgb(255, 255, 255); /* Customize the text color */
+  color: rgb(255, 255, 255); 
   height: 4vh; 
   font-family: "Roboto Slab", Arial, sans-serif;
 }

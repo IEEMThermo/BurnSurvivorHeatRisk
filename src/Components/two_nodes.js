@@ -304,12 +304,12 @@ export async function two_nodes(zipcode, met, clo, burn_surface, length_time_sim
         let { tdb, tr, rh, v } = await fetchWeatherData(zipcode);
 
         // If user is in direct sun
-        if (shade_sun == 2) {
+        if (shade_sun === 2) {
             tr += 30;
         }
 
         //if user is indoors and in an air conditioned space
-        if(shade_sun == 3){
+        if(shade_sun === 3){
             tdb = 21.1; //70 F in C
             tr = tdb;
             v = 0;
@@ -317,7 +317,7 @@ export async function two_nodes(zipcode, met, clo, burn_surface, length_time_sim
         }
 
         //if user is indoors and in a warm space
-        if(shade_sun == 4){
+        if(shade_sun === 4){
             tdb = 30; //86 F in C
             tr = tdb;
             v = 0;
@@ -325,7 +325,7 @@ export async function two_nodes(zipcode, met, clo, burn_surface, length_time_sim
         }
 
         //if user is indoors and in a hot space
-        if(shade_sun == 5){
+        if(shade_sun === 5){
             tdb = 37.7; //100 F in C
             tr = tdb;
             v = 0;
@@ -361,12 +361,12 @@ export function two_nodes_forecast(array, met, clo, burn_surface, length_time_si
         let v = array[3];
 
         // If user is in direct sun
-        if (shade_sun == 2) {
+        if (shade_sun === 2) {
             tr += 30;
         }
 
         //if user is indoors and in an air conditioned space
-        if(shade_sun == 3){
+        if(shade_sun === 3){
             tdb = 21.1; //70 F in C
             tr = tdb;
             v = 0;
@@ -374,7 +374,7 @@ export function two_nodes_forecast(array, met, clo, burn_surface, length_time_si
         }
 
         //if user is indoors and in a warm space
-        if(shade_sun == 4){
+        if(shade_sun === 4){
             tdb = 30; //86 F in C
             tr = tdb;
             v = 0;
@@ -382,7 +382,7 @@ export function two_nodes_forecast(array, met, clo, burn_surface, length_time_si
         }
 
         //if user is indoors and in a hot space
-        if(shade_sun == 5){
+        if(shade_sun === 5){
             tdb = 37.7; //100 F in C
             tr = tdb;
             v = 0;

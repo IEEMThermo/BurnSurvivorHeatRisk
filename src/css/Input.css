@@ -260,7 +260,7 @@ input[type="text"],
  
    input[type="text"],
    select {
-     width: 65%;
+     width: 60%;
      font-size: 12px;
    }
    
@@ -276,13 +276,12 @@ input[type="text"],
    .met-help-button,
    .clo-help-button,
    .burnsurface-help-button{
-     margin-right: 3.5%;
-     font-size: 8px;
+     font-size: 10px;
    }
 
  
    .search-results{
-     width: 62%;
+     width: 58%;
    }
 
    .search-results li{

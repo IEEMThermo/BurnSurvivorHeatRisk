@@ -8,7 +8,6 @@ function Photo() {
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '55px', marginBottom: '55px'}}>
       <img
         src={logo}
-        alt="Image Description"
         style={{ width: '55%', height: '120px' }}
       />
       </div>

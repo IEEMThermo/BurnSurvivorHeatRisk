@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { getColor, two_nodes, fetchForecastData, two_nodes_forecast } from './Components/two_nodes';
 import './css/Input.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -52,10 +52,10 @@ function Calculate() {
   const [value6, setValue6] = useState('');
 
   //result state variables
-  const [result, setResult] = useState('');
+  //const [result, setResult] = useState('');
   const [textColor, setTextColor] = useState('result-box');
   const [resultText, setResultText] = useState('');
-  const {resultColor, setResultColor} = useResultColor();
+  //const {resultColor, setResultColor} = useResultColor();
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   // search bar state variables
@@ -204,8 +204,8 @@ function Calculate() {
   const calculate = async () => {
     let resultNum = await two_nodes(coord, value2, value3, value4, value5, value6);
     let resultColor = getColor(resultNum);
-    setResult(resultColor);
-    setResultColor(resultColor);
+    //setResult(resultColor);
+    //setResultColor(resultColor);
 
     let textColor = "";
     let resultText = "";
@@ -334,7 +334,7 @@ function Calculate() {
   //When user presses the "calculate" button
   const handleButtonClick = () => {
     // Check if a city has not been selected
-    if (!coord) {
+    if (!name) {
       // Display an alert
       window.alert("Enter a city.");
       return; 

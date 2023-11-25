@@ -26,3 +26,9 @@
   margin-left: 15px;
   color: white;
 }
+
+@media screen and (max-width: 480px) {
+  .header-title {
+    font-size: 12px;
+  }
+}

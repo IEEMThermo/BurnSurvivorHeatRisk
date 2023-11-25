@@ -220,7 +220,6 @@ input[type="text"],
 
 
 @media screen and (max-width: 950px) {
-
  .inputBox{
   width: 80%;
  }
@@ -253,6 +252,43 @@ input[type="text"],
   }
 
 }
+
+@media screen and (max-width: 480px) {
+  .inputBox{
+   width: 100%;
+  }
+ 
+   input[type="text"],
+   select {
+     width: 80%;
+   }
+ 
+   .met-help-button,
+   .clo-help-button,
+   .burnsurface-help-button{
+     margin-right: 3.5%;
+   }
+ 
+   .search-results{
+     width: 78%;
+   }
+ 
+   .graph-container {
+     width: 80%; 
+   }
+ 
+   .result-box,
+   .Green,
+   .Orange,
+   .Yellow,
+   .Red {
+     width: 80%;
+   }
+
+   .legend{
+    font-size: 10px;
+   }
+ }
 
 .forecast-title {
   text-align: center; 

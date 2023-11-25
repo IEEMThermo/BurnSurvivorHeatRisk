@@ -19,8 +19,8 @@ function Photo() {
   }, []);
 
   // Define the dimensions based on the screen width
-  const photoWidth = windowWidth > 600 ? '55%' : '100%';
-  const photoHeight = windowWidth > 600 ? '120px' : '80px';
+  const photoWidth = windowWidth > 650 ? '55%' : '100%';
+  const photoHeight = windowWidth > 650 ? '120px' : '80px';
 
   return (
     <div className='photo'>

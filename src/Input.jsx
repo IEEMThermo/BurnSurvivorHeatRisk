@@ -164,6 +164,11 @@ function Calculate() {
     }
   }
 
+  // Dynamically set font size based on screen width
+  const getFontSize = () => {
+    return window.innerWidth <= 480 ? 8 : 12; 
+  };
+
   //controls graph visibility
   const toggleDivVisibility = () => {
     setIsDivVisible(!isDivVisible);
@@ -556,7 +561,7 @@ function Calculate() {
               x: {
                 ticks: {
                   font: {
-                    size: 12, // Adjust this value to set the desired font size
+                    size: getFontSize(), // Adjust this value to set the desired font size
                   },
                 },
                },

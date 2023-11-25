@@ -1,6 +1,7 @@
 
 .inputBox {
-  max-width: 900px;
+  max-width: 100%;
+  width: 60%;
   flex-direction: column; 
   margin: 0 auto;
 }
@@ -20,7 +21,7 @@
 
 input[type="text"],
   select {
-    width: 650px;
+    width: 70%;
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -40,7 +41,7 @@ input[type="text"],
 .burnsa_container label,
 .duration_container label,
 .shade_container label {
-  width: 150px; 
+  width: 20%; 
 }
 
 
@@ -66,8 +67,6 @@ input[type="text"],
   font-size: 20px;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 30px;
   cursor: pointer;
 }
 
@@ -175,9 +174,9 @@ input[type="text"],
 
 
 .search-results {
-  width: 640px;
+  width: 67%;
   margin: 0 auto;
-  margin-left: 20%;
+  margin-left: 23%;
   top: 100%; 
   max-height: 300px; 
   overflow-y: auto; 
@@ -220,26 +219,15 @@ input[type="text"],
 }
 
 
-@media (max-width: 900px) {
+@media screen and (max-width: 950px) {
 
  .inputBox{
-  width: 100%;
+  width: 80%;
  }
 
   input[type="text"],
   select {
     width: 60%;
-  }
-
-  .search-container,
-  .met_container,
-  .clo_container,
-  .burnsa_container,
-  .duration_container,
-  .shade_container{
-    width: 100%;
-    margin: 0 auto;
-
   }
 
   .met-help-button,
@@ -249,8 +237,7 @@ input[type="text"],
   }
 
   .search-results{
-    width: 60%;
-    margin-left: 175px;
+    width: 58%;
   }
 
   .graph-container {

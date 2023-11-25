@@ -49,7 +49,7 @@ export function two_nodes_optimized(
     let e_max = 0;
     let m_rsw = 0;
     let q_res = 0;
-    //let et = 0;
+    let et = 0;
     let e_req = 0;
     let r_ea = 0;
     let r_ecl = 0;
@@ -271,19 +271,19 @@ export function two_nodes_optimized(
     }
 
     // PMV Gagge
-    //let pmv_gagge = (0.303 * Math.exp(-0.036 * m) + 0.028) * (e_req - e_comfort - e_diff);
+    let pmv_gagge = (0.303 * Math.exp(-0.036 * m) + 0.028) * (e_req - e_comfort - e_diff);
 
     // PMV SET
     let dry_set = h_d_s * (t_skin - _set);
     let e_req_set = rm - c_res - q_res - dry_set;
-    //let pmv_set = (0.303 * Math.exp(-0.036 * m) + 0.028) * (e_req_set - e_comfort - e_diff);
+    let pmv_set = (0.303 * Math.exp(-0.036 * m) + 0.028) * (e_req_set - e_comfort - e_diff);
 
     // Predicted Percent Satisfied With the Level of Air Movement
-    //let ps = 100 * (1.13 * Math.sqrt(t_op) - 0.24 * t_op + 2.7 * Math.sqrt(v) - 0.99 * v);
+    let ps = 100 * (1.13 * Math.sqrt(t_op) - 0.24 * t_op + 2.7 * Math.sqrt(v) - 0.99 * v);
 
     // Print the thermal sensation and core temperature
-    //let rounded_t_sens = t_sens.toFixed(2);
-    //let rounded_t_core = t_core.toFixed(2);
+    let rounded_t_sens = t_sens.toFixed(2);
+    let rounded_t_core = t_core.toFixed(2);
 
     return t_core;
 }

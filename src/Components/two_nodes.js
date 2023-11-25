@@ -409,7 +409,7 @@ export function two_nodes_forecast(array, met, clo, burn_surface, length_time_si
 
 //Function that calls the API and fetches the tdb, tr, rh, and v values
 export async function fetchWeatherData(zipcode) {
-  const BASE_URL = "http://api.openweathermap.org/data/2.5/weather?";
+  const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?";
   const API_KEY = process.env.REACT_APP_API_KEY;
 
   let zipcodeStr = String(zipcode).split(',');
@@ -436,7 +436,7 @@ export async function fetchWeatherData(zipcode) {
 
 //Function that calls API and fetches the tdb, tr, rh, and v values for forecasted risk array
 export async function fetchForecastData(zipcode) {
-    const BASE_URL = "http://api.openweathermap.org/data/2.5/forecast?";
+    const BASE_URL = "https://api.openweathermap.org/data/2.5/forecast?";
     const API_KEY = process.env.REACT_APP_API_KEY;
   
     let zipcodeStr = String(zipcode).split(',');

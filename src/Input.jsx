@@ -17,7 +17,7 @@ async function getCityName(zipcode){
   const zipcodeStr = String(zipcode);
 
   //open weather api call
-  const CITY_BASE_URL = "http://api.openweathermap.org/geo/1.0/direct?q=";
+  const CITY_BASE_URL = "https://api.openweathermap.org/geo/1.0/direct?q=";
   const API_KEY = process.env.REACT_APP_API_KEY;
   const city_url =  `${CITY_BASE_URL}${zipcodeStr}&limit=5&appid=${API_KEY}`;
 

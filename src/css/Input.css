@@ -277,7 +277,9 @@ input[type="text"],
    .clo-help-button,
    .burnsurface-help-button{
      margin-right: 3.5%;
+     font-size: 8px;
    }
+
  
    .search-results{
      width: 62%;

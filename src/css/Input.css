@@ -255,12 +255,12 @@ input[type="text"],
 
 @media screen and (max-width: 480px) {
   .inputBox{
-   width: 100%;
+   width: 90%;
   }
  
    input[type="text"],
    select {
-     width: 80%;
+     width: 70%;
    }
  
    .met-help-button,
@@ -270,11 +270,11 @@ input[type="text"],
    }
  
    .search-results{
-     width: 78%;
+     width: 68%;
    }
  
    .graph-container {
-     width: 80%; 
+     width: 90%; 
    }
  
    .result-box,

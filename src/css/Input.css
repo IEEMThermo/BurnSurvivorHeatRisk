@@ -255,14 +255,24 @@ input[type="text"],
 
 @media screen and (max-width: 480px) {
   .inputBox{
-   width: 90%;
+   width: 100%;
   }
  
    input[type="text"],
    select {
      width: 70%;
+     font-size: 12px;
    }
- 
+   
+   .search-container label,
+   .met_container label,
+   .clo_container label,
+   .burnsa_container label,
+   .duration_container label,
+   .shade_container label{
+      font-size: 12px;
+   }
+
    .met-help-button,
    .clo-help-button,
    .burnsurface-help-button{
@@ -271,6 +281,8 @@ input[type="text"],
  
    .search-results{
      width: 68%;
+     font-size: 12px;
+     
    }
  
    .graph-container {
@@ -286,7 +298,7 @@ input[type="text"],
    }
 
    .legend{
-    font-size: 10px;
+    font-size: 12px;
    }
  }
 

@@ -61,3 +61,15 @@
     width: 80%;
   }
 }
+
+@media (max-width: 480px) {
+  .toggle-bar{
+    width: 80%;
+  }
+
+  .toggle-bar button,
+  .toggle-bar .detailed-descriptions {
+    font-size: 12px;
+    color: black;
+  }
+}

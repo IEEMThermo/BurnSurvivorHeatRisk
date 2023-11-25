@@ -260,7 +260,7 @@ input[type="text"],
  
    input[type="text"],
    select {
-     width: 60%;
+     width: 63%;
      font-size: 12px;
    }
    
@@ -281,7 +281,7 @@ input[type="text"],
 
  
    .search-results{
-     width: 58%;
+     width: 59%;
    }
 
    .search-results li{

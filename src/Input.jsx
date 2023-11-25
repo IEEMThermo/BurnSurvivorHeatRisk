@@ -553,6 +553,13 @@ function Calculate() {
                 y: {
                   display: false,
                 },
+              x: {
+                ticks: {
+                  font: {
+                    size: 12, // Adjust this value to set the desired font size
+                  },
+                },
+               },
               },
               plugins: {
                 legend: {
@@ -561,7 +568,7 @@ function Calculate() {
               },
             }}
           >
-            <div className="graph-background"></div>
+          
           </Line>
         </div>
       )}

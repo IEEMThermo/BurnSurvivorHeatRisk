@@ -251,6 +251,7 @@ input[type="text"],
     width: 75%;
   }
 
+
 }
 
 @media screen and (max-width: 480px) {
@@ -262,6 +263,7 @@ input[type="text"],
    select {
      width: 61%;
      font-size: 12px;
+     padding: 10px;
    }
    
    .search-container label,
@@ -279,7 +281,6 @@ input[type="text"],
      font-size: 10px;
    }
 
- 
    .search-results{
      width: 57%;
    }
@@ -301,7 +302,7 @@ input[type="text"],
    }
 
    .legend{
-    font-size: 12px;
+    font-size: 14px;
    }
  }
 

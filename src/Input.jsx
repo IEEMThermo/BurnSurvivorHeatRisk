@@ -166,7 +166,7 @@ function Calculate() {
 
   // Dynamically set font size based on screen width
   const getFontSize = () => {
-    return window.innerWidth <= 480 ? 8 : 12; 
+    return window.innerWidth <= 500 ? 8 : 12; 
   };
 
   //controls graph visibility

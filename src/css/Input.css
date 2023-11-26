@@ -190,8 +190,8 @@ input[type="text"],
 
 
 .search-results ul {
-  list-style: none; /* Remove list bullets/dots */
   border-bottom:1px rgb(104, 99, 99);
+  list-style: circle;
 }
 
 /* Add styles for individual search result items */

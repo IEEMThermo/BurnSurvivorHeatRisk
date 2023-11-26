@@ -51,7 +51,7 @@ input[type="text"],
 .burnsa_container i.fa-solid,
 .duration_container i.fa-solid,
 .shade_container i.fa-solid {
-  right: 35px;
+  right: 30px;
   color: #555; 
   display: flex;
   align-items: center;
@@ -274,6 +274,15 @@ input[type="text"],
       font-size: 12px;
    }
 
+   .search-container i.fa-solid,
+   .met_container i.fa-solid,
+   .clo_container i.fa-solid,
+   .burnsa_container i.fa-solid,
+   .duration_container i.fa-solid,
+   .shade_container i.fa-solid {
+     right: 30px;
+   }
+
    .met-help-button,
    .clo-help-button,
    .burnsurface-help-button{
@@ -298,6 +307,7 @@ input[type="text"],
    .Yellow,
    .Red {
      width: 70%;
+     font-size: 15px;
    }
 
    .legend{

@@ -317,7 +317,7 @@ input[type="text"],
      padding: 10px;
    }
 
-    option {
+   .inputBox option {
     font-size: 11px;
    }
 

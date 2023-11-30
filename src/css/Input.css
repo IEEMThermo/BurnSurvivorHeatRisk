@@ -337,7 +337,7 @@ input[type="text"],
  
    input[type="text"],
    select {
-     width: 61%;
+     width: 60%;
      font-size: 14px;
      padding: 10px;
    }
@@ -376,7 +376,7 @@ input[type="text"],
    }
 
    .search-results{
-     width: 58%;
+     width: 57%;
    }
 
    .search-results li{

@@ -31,7 +31,6 @@ input[type="text"],
     cursor: pointer;
     margin-left: 10px; 
     color: rgb(104, 99, 99);
-    box-sizing: border-box;
 }
 
 
@@ -68,6 +67,7 @@ input[type="text"],
   border: none;
   border-radius: 50%;
   cursor: pointer;
+  margin-right: 2%;
 }
 
 .calculate {
@@ -218,110 +218,10 @@ input[type="text"],
   color: #333; 
 }
 
-
-@media screen and (max-width: 950px) {
- .inputBox{
-  width: 80%;
- }
-
-  input[type="text"],
-  select {
-    width: 60%;
-  }
-
-  .met-help-button,
-  .clo-help-button,
-  .burnsurface-help-button{
-    margin-right: 3.5%;
-  }
-
-  .search-results{
-    width: 58%;
-  }
-
-  .graph-container {
-    width: 90%; 
-  }
-
-  .result-box,
-  .Green,
-  .Orange,
-  .Yellow,
-  .Red {
-    width: 75%;
-  }
-
-}
-
-@media screen and (max-width: 480px) {
-  .inputBox{
-   width: 100%;
-  }
- 
-   input[type="text"],
-   select {
-     width: 61%;
-     font-size: 12px;
-     padding: 10px;
-   }
-   
-   .search-container label,
-   .met_container label,
-   .clo_container label,
-   .burnsa_container label,
-   .duration_container label,
-   .shade_container label{
-      font-size: 12px;
-   }
-
-   .search-container i.fa-solid,
-   .met_container i.fa-solid,
-   .clo_container i.fa-solid,
-   .burnsa_container i.fa-solid,
-   .duration_container i.fa-solid,
-   .shade_container i.fa-solid {
-     right: 30px;
-   }
-
-   .met-help-button,
-   .clo-help-button,
-   .burnsurface-help-button{
-     font-size: 10px;
-   }
-
-   .search-results{
-     width: 58%;
-   }
-
-   .search-results li{
-    font-size: 12px;
-   }
- 
-   .graph-container {
-     width: 90%; 
-   }
- 
-   .result-box,
-   .Green,
-   .Orange,
-   .Yellow,
-   .Red {
-     width: 70%;
-     font-size: 15px;
-   }
-
-   .legend{
-    font-size: 12px;
-   }
-
-   .calculate-button{
-    padding: 10px 20px;
-  }
- }
-
 .forecast-title {
   text-align: center; 
-  font-size: 24px; 
+  font-size: 20px; 
+  font-weight: bold;
 }
 
 .legend {
@@ -356,3 +256,128 @@ input[type="text"],
 .red {
   background-color: #b83c55;
 }
+
+
+
+
+@media screen and (max-width: 1200px) {
+ .inputBox{
+  width: 80%;
+ }
+
+  input[type="text"],
+  select {
+    width: 60%;
+  }
+
+  .met-help-button,
+  .clo-help-button,
+  .burnsurface-help-button{
+    margin-right: 12%;
+  }
+
+  .search-results{
+    width: 58%;
+  }
+
+  .graph-container {
+    width: 90%; 
+  }
+
+  .result-box,
+  .Green,
+  .Orange,
+  .Yellow,
+  .Red {
+    width: 75%;
+  }
+
+}
+
+@media screen and (max-width: 870px) {
+  .met-help-button,
+  .clo-help-button,
+  .burnsurface-help-button{
+    margin-right: 8%;
+  }
+}
+
+
+
+@media screen and (max-width: 600px) {
+  .inputBox{
+   width: 100%;
+  }
+ 
+   input[type="text"],
+   select {
+     width: 61%;
+     font-size: 10px;
+     padding: 10px;
+   }
+
+   
+   .search-container label,
+   .met_container label,
+   .clo_container label,
+   .burnsa_container label,
+   .duration_container label,
+   .shade_container label{
+      font-size: 12px;
+   }
+
+   .search-container i.fa-solid,
+   .met_container i.fa-solid,
+   .clo_container i.fa-solid,
+   .burnsa_container i.fa-solid,
+   .duration_container i.fa-solid,
+   .shade_container i.fa-solid {
+     right: 30px;
+   }
+
+   .met-help-button,
+   .clo-help-button,
+   .burnsurface-help-button{
+     font-size: 10px;
+     margin-right: 20px;
+   }
+
+   .calculate-button{
+    padding: 10px 15px;
+    font-size: 14px;
+   }
+
+   .search-results{
+     width: 58%;
+   }
+
+   .search-results li{
+    font-size: 12px;
+   }
+   
+   .forecast-title {
+    font-size: 14px;
+   }
+
+   .graph-container {
+     width: 90%; 
+   }
+ 
+   .result-box,
+   .Green,
+   .Orange,
+   .Yellow,
+   .Red {
+     width: 70%;
+     font-size: 15px;
+   }
+
+   .legend{
+    font-size: 10px;
+   }
+
+   .calculate-button{
+    padding: 10px 20px;
+  }
+ }
+

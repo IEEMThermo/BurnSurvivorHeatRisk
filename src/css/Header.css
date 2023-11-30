@@ -25,10 +25,14 @@
 .header i {
   margin-left: 15px;
   color: white;
+  font-size: 25px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .header-title {
     font-size: 15px;
+  }
+  .header i {
+    font-size: 18px;
   }
 }

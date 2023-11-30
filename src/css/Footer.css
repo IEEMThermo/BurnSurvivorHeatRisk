@@ -4,24 +4,9 @@
 .footer {
   background-color: #333;
   color: #fff;
-  padding: 33px;
-  position: relative;
+  padding: 15px;
+  font-size: 12px;
   bottom: 0;
-
-}
-
-/* Style for footer content */
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-/* Style for the copyright text */
-.footer p {
-  margin: 0;
-  font-size: 14px;
 }
 
 /* Change link color on hover */
@@ -32,22 +17,7 @@
 /* Style for the website link */
 .footer a.website-link {
   color: #fff;
-  font-size: 13px; 
   text-decoration: none;
-  align-items: center;
-  margin-top: 5px; 
-}
-
-.footer-container {
-  position: relative; 
-}
-
-.disclaimer-box {
-  background-color: #f0f0f0; 
-  text-align: center; 
-  padding: 10px; 
-  font-size: 12px; 
-  bottom: 10px;
 }
 
 @media screen and (max-width: 480px) {

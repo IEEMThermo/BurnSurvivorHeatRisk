@@ -19,12 +19,12 @@ function Photo() {
   }, []);
 
   // Define the dimensions based on the screen width
-  const photoWidth = windowWidth > 650 ? '55%' : '100%';
-  const photoHeight = windowWidth > 650 ? '120px' : '80px';
+  const photoWidth = windowWidth > 750 ? '55%' : '70%';
+  const photoHeight = windowWidth > 750 ? '120px' : '75px';
 
   return (
     <div className='photo'>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '55px', marginBottom: '55px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '10px', marginBottom: '55px' }}>
         <img
           src={logo}
           alt=""

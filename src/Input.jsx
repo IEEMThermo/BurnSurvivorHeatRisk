@@ -166,12 +166,12 @@ function Calculate() {
 
   // Dynamically set font size based on screen width
   const getFontSize = () => {
-    return window.innerWidth <= 500 ? 8 : 12; 
+    return window.innerWidth <= 630 ? 8 : 12; 
   };
 
   //controls graph visibility
   const toggleDivVisibility = () => {
-    setIsDivVisible(!isDivVisible);
+    setIsDivVisible(true);
   };
 
   // Define functions to handle input changes
@@ -521,7 +521,7 @@ function Calculate() {
             <><p>{resultText}</p><i className="fa fa-exclamation-triangle" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
           )}
           {resultText === "Unsafe exposure, extreme caution" && (
-            <><p>{resultText}</p><i className="fa fa-hand-paper-o" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
+            <><p>{resultText}</p><i className="fa-solid fa-hand" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
           )}
         </div>
       </div>
@@ -543,7 +543,7 @@ function Calculate() {
       {/*Forecasted Risk Graph */}
       {isDivVisible && (
         <div className="graph-container">
-          <h2 className="forecast-title">Forecasted risk for today</h2>
+          <p className="forecast-title">Forecasted risk for the next 24 hours</p>
           <div className="legend">
           <span className="legend-color green"></span> Low
           <span className="legend-color yellow"></span> Moderate

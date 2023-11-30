@@ -342,6 +342,7 @@ input[type="text"],
    .met-help-button,
    .clo-help-button,
    .burnsurface-help-button{
+     text-align: center;
      font-size: 12px;
      margin-right: 12px;
      width: 3px;

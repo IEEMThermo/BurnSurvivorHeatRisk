@@ -312,7 +312,7 @@ input[type="text"],
    input[type="text"],
    select {
      width: 61%;
-     font-size: 10px;
+     font-size: 12px;
      padding: 10px;
    }
 
@@ -339,7 +339,7 @@ input[type="text"],
    .clo-help-button,
    .burnsurface-help-button{
      font-size: 10px;
-     margin-right: 20px;
+     margin-right: 15px;
    }
 
    .calculate-button{

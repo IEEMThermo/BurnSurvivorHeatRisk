@@ -270,6 +270,7 @@ input[type="text"],
     width: 60%;
   }
 
+
   .met-help-button,
   .clo-help-button,
   .burnsurface-help-button{
@@ -316,7 +317,10 @@ input[type="text"],
      padding: 10px;
    }
 
-   
+    option {
+    font-size: 11px;
+   }
+
    .search-container label,
    .met_container label,
    .clo_container label,
@@ -338,10 +342,10 @@ input[type="text"],
    .met-help-button,
    .clo-help-button,
    .burnsurface-help-button{
-     font-size: 10px;
+     font-size: 12px;
      margin-right: 12px;
-     width: 2px;
-     height: 2vh;
+     width: 3px;
+     height: 3vh;
    }
 
    .calculate-button{

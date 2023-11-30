@@ -339,7 +339,9 @@ input[type="text"],
    .clo-help-button,
    .burnsurface-help-button{
      font-size: 10px;
-     margin-right: 15px;
+     margin-right: 12px;
+     width: 2px;
+     height: 2vh;
    }
 
    .calculate-button{

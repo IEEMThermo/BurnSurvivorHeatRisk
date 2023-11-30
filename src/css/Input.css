@@ -295,7 +295,7 @@ input[type="text"],
 
 }
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 950px) {
   .met-help-button,
   .clo-help-button,
   .burnsurface-help-button{
@@ -343,7 +343,7 @@ input[type="text"],
    .clo-help-button,
    .burnsurface-help-button{
      text-align: center;
-     font-size: 12px;
+     font-size: 14px;
      margin-right: 12px;
      width: 3px;
      height: 3vh;

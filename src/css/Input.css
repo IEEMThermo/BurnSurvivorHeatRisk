@@ -338,12 +338,8 @@ input[type="text"],
    input[type="text"],
    select {
      width: 61%;
-     font-size: 12px;
+     font-size: 14px;
      padding: 10px;
-   }
-
-   .met_container optgroup {
-    font-size: 12px;
    }
 
    .search-container label,
@@ -352,7 +348,7 @@ input[type="text"],
    .burnsa_container label,
    .duration_container label,
    .shade_container label{
-      font-size: 12px;
+      font-size: 14px;
    }
 
    .search-container i.fa-solid,
@@ -384,11 +380,11 @@ input[type="text"],
    }
 
    .search-results li{
-    font-size: 12px;
+    font-size: 14px;
    }
    
    .forecast-title {
-    font-size: 14px;
+    font-size: 15px;
    }
 
    .graph-container {

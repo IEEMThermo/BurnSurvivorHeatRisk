@@ -296,16 +296,41 @@ input[type="text"],
 }
 
 @media screen and (max-width: 950px) {
+  .inputBox{
+    width: 80%;
+   }
+  
+  input[type="text"],
+  select {
+    width: 60%;
+  }
+
   .met-help-button,
   .clo-help-button,
   .burnsurface-help-button{
-    margin-right: 8%;
+    margin-right: 7%;
+  }
+  
+   .search-results{
+    width: 58%;
+  }
+
+  .graph-container {
+    width: 90%; 
+  }
+
+  .result-box,
+  .Green,
+  .Orange,
+  .Yellow,
+  .Red {
+    width: 75%;
   }
 }
 
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 550px) {
   .inputBox{
    width: 100%;
   }
@@ -317,8 +342,8 @@ input[type="text"],
      padding: 10px;
    }
 
-   .inputBox option {
-    font-size: 11px;
+   .met_container optgroup {
+    font-size: 12px;
    }
 
    .search-container label,

@@ -426,12 +426,14 @@ function Calculate() {
           value={value2}
           onChange={(e) => setValue2(e.target.value)}
         >
+          <optgroup>
           <option value=""disabled hidden>Select Activity Level</option>
           <option value="1">Rest</option>
           <option value="2">Low</option>
           <option value="3">Moderate </option>
           <option value="4">High </option>
           <option value="5">Very High </option>
+          </optgroup>
         </select>
         <i className="fa-solid fa-person-running"></i>
         <button className='met-help-button' onClick={toggleHelpMet}>?</button>
@@ -445,12 +447,14 @@ function Calculate() {
           value={value3}
           onChange={(e) => setValue3(e.target.value)}
         >
+          <optgroup>
           <option value=""disabled hidden>Select Clothing Coverage</option>
           <option value="0.15">Very light</option>
           <option value="0.3">Light</option>
           <option value="0.7">Moderate</option>
           <option value="1.0">Heavy</option>
           <option value="1.5">Very Heavy</option>
+          </optgroup>
         </select>
         <i className="fa-solid fa-shirt"></i>
         <button className='clo-help-button' onClick={toggleHelpClo}>?</button>
@@ -491,13 +495,15 @@ function Calculate() {
         <select
           value={value6}
           onChange={(e) => setValue6(e.target.value)}
-        >
+          >
+          <optgroup>
           <option value=""disabled hidden>Select Activity Environment </option>
           <option value="1">Outside and in the shade</option>
           <option value="2">Outside and in direct sun</option>
           <option value="3">Indoors and in an air conditioned space </option>
           <option value="4">Indoors and in a moderately warm space </option>
           <option value="5">Indoors and in a hot space</option>
+          </optgroup>
           </select>
           <i className="fa-solid fa-cloud-sun"></i>
       </div>

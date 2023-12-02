@@ -50,7 +50,7 @@ input[type="text"],
 .burnsa_container i.fa-solid,
 .duration_container i.fa-solid,
 .shade_container i.fa-solid {
-  right: 30px;
+  right: 40px;
   color: #555; 
   display: flex;
   align-items: center;
@@ -260,7 +260,7 @@ input[type="text"],
 
 
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1300px) {
  .inputBox{
   width: 80%;
  }
@@ -295,7 +295,7 @@ input[type="text"],
 
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1000px) {
   .inputBox{
     width: 80%;
    }

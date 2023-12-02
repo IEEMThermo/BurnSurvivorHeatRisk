@@ -219,25 +219,25 @@ function Calculate() {
     switch(resultColor) {
       case 'Green: \n Exercise is safe.':
         textColor = "Green";
-        resultText = "Exercise is safe";
+        resultText = "Estimated heat stress risk is low";
         setTextColor(textColor);
         setResultText(resultText);
         break;
       case 'Red: \n Unsafe exposure. Extreme Caution.':
         textColor = "Red";
-        resultText = "Unsafe exposure, extreme caution";
+        resultText = "Estimated heat stress risk is extreme";
         setTextColor(textColor);
         setResultText(resultText);
         break;
       case 'Yellow: \n Caution, regularly hydrate.':
         textColor = "Yellow";
-        resultText = "Caution";
+        resultText = "Estimated heat stress risk is moderate";
         setTextColor(textColor);
         setResultText(resultText);
         break;
       case 'Orange: \n Strong caution, regularly drink fluids, take frequent rest breaks, consider active cooling i.e., water spray.':
         textColor = "Orange";
-        resultText = "Strong caution";
+        resultText = "Estimated heat stress risk is high";
         setTextColor(textColor);
         setResultText(resultText);
         break;
@@ -517,17 +517,17 @@ function Calculate() {
 
       <div className='result'>
         <div className={textColor} style={{flexDirection: 'column', alignItems: 'center' }}>
-          {resultText === "Exercise is safe" && (
-            <><p>{resultText}</p><i className="fa-solid fa-face-smile" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
+          {resultText === "Estimated heat stress risk is low" && (
+            <><p>{resultText}</p><i className="fa-solid fa-face-smile fa-bounce" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
           )}
-          {resultText === "Caution" && (
-            <><p>{resultText}</p><i className="fa-solid fa-bottle-water" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
+          {resultText === "Estimated heat stress risk is moderate" && (
+            <><p>{resultText}</p><i className="fa-solid fa-bottle-water fa-bounce" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
           )}
-          {resultText === "Strong caution" && (
-            <><p>{resultText}</p><i className="fa fa-exclamation-triangle" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
+          {resultText === "Estimated heat stress risk is high" && (
+            <><p>{resultText}</p><i className="fa fa-exclamation-triangle fa-bounce" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
           )}
-          {resultText === "Unsafe exposure, extreme caution" && (
-            <><p>{resultText}</p><i className="fa-solid fa-hand" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
+          {resultText === "Estimated heat stress risk is extreme" && (
+            <><p>{resultText}</p><i className="fa-solid fa-hand fa-beat" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
           )}
         </div>
       </div>

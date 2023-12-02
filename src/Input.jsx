@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { getColor, two_nodes, fetchForecastData, two_nodes_forecast } from './Components/two_nodes';
 import './css/Input.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -43,6 +43,9 @@ function Calculate() {
 
   //ref for result box
   const resultBoxRef = useRef(null);
+
+  // use a state variable to trigger scrolling
+  const [scrollToTop, setScrollToTop] = useState(false);
 
   // help button state variables
   const [showHelpMet, setShowHelpMet] = useState(false);
@@ -178,6 +181,17 @@ function Calculate() {
   const toggleDivVisibility = () => {
     setIsDivVisible(true);
   };
+
+  // useEffect to handle scrolling
+  useEffect(() => {
+    if (scrollToTop && resultBoxRef.current) {
+      resultBoxRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+      setScrollToTop(false); // reset the state after scrolling
+    }
+  }, [scrollToTop]);
 
   // Define functions to handle input changes
   const handleItemClick = (item) => {
@@ -379,17 +393,13 @@ function Calculate() {
       window.alert("Enter an option for Activity Environment.");
       return; 
     }
-        // scroll to the result box
-    if (resultBoxRef.current) {
-      resultBoxRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-    }
-
     calculate();
     GraphCalculate();
     toggleDivVisibility();
+
+    // set the state to trigger scrolling
+    setScrollToTop(true); 
+
   }
 
 

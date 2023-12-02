@@ -12,36 +12,6 @@ import HelpPopupClothing from './Components/HelpPopupClothing';
 import { Line } from 'react-chartjs-2';
 import {Chart, registerables} from 'chart.js'; 
 
-//Function that gets city based off of user input
-async function getCityName(zipcode){
-  const zipcodeStr = String(zipcode);
-
-  //open weather api call
-  const CITY_BASE_URL = "https://api.openweathermap.org/geo/1.0/direct?q=";
-  const API_KEY = process.env.REACT_APP_API_KEY;
-  const city_url =  `${CITY_BASE_URL}${zipcodeStr}&limit=5&appid=${API_KEY}`;
-
-  //query search results
-  try {
-    const response = await axios.get(city_url);
-    const data = response.data;
-    let dataElements = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]];
-    data.forEach((item, index) => {
-      if (item.state === undefined) {
-        dataElements[index][0] = String(item.name + ", " + item.country);
-      } else {
-        dataElements[index][0] = String(item.name + ", " + item.state + ", " + item.country + ".   ");
-      }
-      dataElements[index][1] = String(item.lat + "," + item.lon);
-  });
-  
-  return dataElements;
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
-  }
-}
-
 //Function responsible for displaying all the input boxes, and calculate functions
 function Calculate() {
   // input value state variables
@@ -62,6 +32,7 @@ function Calculate() {
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [selectedItem, setSelectedItem] = useState([]);
+  const [coordinates, setCoordindates] = useState([]);
   const [name, setName] = useState('');
   const [coord, setCoord] = useState('');
 
@@ -128,8 +99,7 @@ function Calculate() {
                               <br> <br>
                               If you are unsure of your burn surface area, visit one of these resources to estimate that area: <br>
                               <br>
-                              <a href="https://www.burn-app.com/" target="_blank">Estimate Burn Surface Area Website 1</a>\n <br>
-                              <a href="https://www.burn-app.com/" target="_blank">Estimate Burn Surface Area Website 2</a>\n <br>
+                              <a href="https://www.burn-app.com/" target="_blank">Estimate Burn Surface Area Website</a>\n <br>
                               <a href="https://burn.med.jhmi.edu/" target="blank">Estimate Burn Surface Area App</a>`;
   
   //cursor 
@@ -140,6 +110,39 @@ function Calculate() {
   const scaledYellow = Array(8).fill(38);
   const scaledOrange = Array(8).fill(38.5);
   const scaledRed = Array(8).fill(39);
+
+  //Function that gets city based off of user input
+  async function getCityName(zipcode) {
+    const zipcodeStr = String(zipcode);
+
+    //open weather api call
+    const CITY_BASE_URL = "https://api.openweathermap.org/geo/1.0/direct?q=";
+    const API_KEY = process.env.REACT_APP_API_KEY;
+    const city_url = `${CITY_BASE_URL}${zipcodeStr}&limit=5&appid=${API_KEY}`;
+
+    //query search results
+    try {
+      const response = await axios.get(city_url);
+      const data = response.data;
+      let dataElements = ["", "", "", "", ""];
+      let coordinates = ["", "", "", "", ""];
+      data.forEach((item, index) => {
+        if (item.state === undefined) {
+          dataElements[index] = String(item.name + ", " + item.country);
+        } else {
+          dataElements[index] = String(item.name + ", " + item.state + ", " + item.country + ".   ");
+        }
+        coordinates[index] = String(item.lat + "," + item.lon);
+      });
+
+      setCoordindates(coordinates);
+      return dataElements;
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
+  }
+
   let dataset = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]];
 
   //handle search bar input change
@@ -176,13 +179,13 @@ function Calculate() {
 
   // Define functions to handle input changes
   const handleItemClick = (item) => {
-    setSelectedItem(item);
-    setName(item[0]);
-    setCoord(item[1]);
+    //setSelectedItem(item);
+    setName(searchResults[item]);
+    setCoord(coordinates[item]);
     // Clear the search results when a city is selected
     setSearchResults([]);
     //change text in input field
-    setQuery(item[0]);
+    setQuery(searchResults[item]);
   };
 
   // Function to expand detailed descriptions button
@@ -359,7 +362,7 @@ function Calculate() {
     // Check if value4 (Burn Surface Area) is not selected
     if (isNaN(value4) || value4 < 1 || value4 > 100 || !value4) {
       // Display an alert
-      window.alert("Enter a valid Burn Surface Area between 1 and 100.");
+      window.alert("Enter a valid Burn Surface Area between 1 and 100. Do not include the % symbol.");
       return; 
     }
     // Check if value5 (Duration) is not selected
@@ -407,7 +410,7 @@ function Calculate() {
                   {searchResults.map((result, index) => (
                     <li
                       key={index}
-                      onClick={() => handleItemClick(result)}
+                      onClick={() => handleItemClick(index)}
                       className={selectedItem === result ? 'selected' : ''}
                     >
                       {result}
@@ -463,11 +466,11 @@ function Calculate() {
 
       {/*Burn Surface Area input*/}
       <div className='burnsa_container'>
-        <label htmlFor="burn_surface_area_input">Burn Surface Area: </label>
+        <label htmlFor="burn_surface_area_input">Burn Surface Area (%): </label>
         <input
           type="text"
           id="burn_surface_area_input"
-          placeholder="Enter Burn Surface Area (1 - 100)"
+          placeholder="Enter Burn Surface Area"
           value={value4}
           onChange={(e) => setValue4(e.target.value)}
         />
@@ -478,11 +481,11 @@ function Calculate() {
 
        {/*Duration input*/}
       <div className='duration_container'>
-        <label htmlFor="duration_input"> Duration of Activity: </label>
+        <label htmlFor="duration_input"> Duration of Activity (min): </label>
         <input
           type="text"
           id="duration_input"
-          placeholder="Enter Duration (in minutes)"
+          placeholder="Enter Duration"
           value={value5}
           onChange={(e) => setValue5(e.target.value)}
         />
@@ -549,7 +552,7 @@ function Calculate() {
       {/*Forecasted Risk Graph */}
       {isDivVisible && (
         <div className="graph-container">
-          <p className="forecast-title">Forecasted risk for the next 24 hours</p>
+          <p className="forecast-title">Forecasted heat risk for the next 24 hours</p>
           <div className="legend">
           <span className="legend-color green"></span> Low
           <span className="legend-color yellow"></span> Moderate

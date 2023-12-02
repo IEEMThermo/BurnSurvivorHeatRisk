@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { getColor, two_nodes, fetchForecastData, two_nodes_forecast } from './Components/two_nodes';
 import './css/Input.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -41,6 +41,8 @@ function Calculate() {
   const [data, setData] = useState('');
   const [isDivVisible, setIsDivVisible] = useState(false);
 
+  //ref for result box
+  const resultBoxRef = useRef(null);
 
   // help button state variables
   const [showHelpMet, setShowHelpMet] = useState(false);
@@ -377,6 +379,14 @@ function Calculate() {
       window.alert("Enter an option for Activity Environment.");
       return; 
     }
+        // scroll to the result box
+    if (resultBoxRef.current) {
+      resultBoxRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+
     calculate();
     GraphCalculate();
     toggleDivVisibility();
@@ -518,7 +528,7 @@ function Calculate() {
         <button className='calculate-button' onClick={handleButtonClick}>Calculate</button>
       </div>
 
-      <div className='result'>
+      <div className='result' ref={resultBoxRef}>
         <div className={textColor} style={{flexDirection: 'column', alignItems: 'center' }}>
           {resultText === "Estimated heat stress risk is low" && (
             <><p>{resultText}</p><i className="fa-solid fa-face-smile fa-bounce" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>

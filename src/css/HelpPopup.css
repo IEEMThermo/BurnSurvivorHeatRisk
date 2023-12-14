@@ -38,9 +38,12 @@
 }
 
 
-#clo-image {
+#clo-image, 
+#met-image {
   width: 100%; 
   max-height: 250px; 
   display: block; 
   margin: 0 auto; 
 }
+
+

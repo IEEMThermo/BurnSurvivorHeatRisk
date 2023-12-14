@@ -9,6 +9,7 @@ import { Collapse } from 'react-collapse';
 import axios from 'axios';
 import HelpPopup from './Components/HelpPopup';
 import HelpPopupClothing from './Components/HelpPopupClothing';
+import HelpPopupMet from './Components/HelpPopupMet';
 import { Line } from 'react-chartjs-2';
 import {Chart, registerables} from 'chart.js'; 
 
@@ -51,54 +52,7 @@ function Calculate() {
   const [showHelpMet, setShowHelpMet] = useState(false);
   const [showHelpBurnSurface, setShowHelpBurnSurface] = useState(false); 
   const [showHelpClo, setShowHelpClo] = useState(false);
-  const helpTextMet = `Activity level reflects how physically active you are. <br>
-                    Make the best estimate of your activity level, using these examples:
-                    <br>
-                    <br>
-                    Low Level Activities:
-                    <ul>
-                      <li>Light manual work (writing, typing, drawing, sewing, book-keeping)</li>
-                      <li>Hand and arm work (small bench tools, inspection, assembly or sorting of light materials)</li>
-                      <li>Arm and leg work (driving vehicle in normal conditions, operating foot switch or pedal)</li>
-                      <li>Standing drilling (small parts)</li>
-                      <li>Milling machine (small parts)</li>
-                      <li>Coil winding</li>
-                      <li>Small armature winding</li>
-                      <li>Machining with low power tools</li>
-                      <li>Casual walking</li>
-                    </ul>
-
-                    Moderate Level Activities:
-                    <ul>
-                      <li>Sustained hand and arm work (hammering in nails, filing)</li>
-                      <li>Arm and leg work (off-road operation of lorries, tractors or construction equipment)</li>
-                      <li>Arm and trunk work (work with pneumatic hammer, tractor assembly, plastering, intermittent handling of moderately heavy material, weeding, hoeing, picking fruits or vegetables, pushing or pulling lightweight carts or wheelbarrows)</li>
-                    </ul>
-
-                    High Level Activities:
-                    <ul>
-                      <li>Intense arm and trunk work</li>
-                      <li>Carrying heavy material</li>
-                      <li>Shovelling</li>
-                      <li>Sledgehammer work</li>
-                      <li>Sawing</li>
-                      <li>Planing or chiselling hard wood</li>
-                      <li>Hand mowing</li>
-                      <li>Digging</li>
-                      <li>Pushing or pulling heavily loaded hand carts or wheelbarrows</li>
-                      <li>Chipping castings</li>
-                      <li>Concrete block laying</li>
-                    </ul>
-
-                    Very High Level Activties:
-                    <ul>
-                      <li>Very intense activity at fast to maximum pace</li>
-                      <li>Working with an axe</li>
-                      <li>Intense shovelling or digging</li>
-                      <li>Climbing stairs, ramp or ladder</li>
-                      <li>Walking quickly with small steps</li>
-                      <li>Running</li>
-                    </ul>`;
+  const helpTextMet = '';
   const helpTextClo = '';
   const helpTextBurnSurface = `Provide a value between 1 and 100 that represents the percentage of body surface area burn. Do not include the % symbol.
                               <br> <br>
@@ -461,7 +415,7 @@ function Calculate() {
         <i className="fa-solid fa-person-running"></i>
         <button className='met-help-button' onClick={toggleHelpMet}>?</button>
       </div>
-      {showHelpMet && <HelpPopup content={helpTextMet} onClose={toggleHelpMet} />}
+      {showHelpMet && <HelpPopupMet content={helpTextMet} onClose={toggleHelpMet} />}
 
       {/*Clothing input */}
       <div className='clo_container'>
@@ -558,7 +512,7 @@ function Calculate() {
        {/*Toggle Bar for detailed descriptions*/}
       <div>
         <div className='toggle-bar'>
-          <button className={`toggle-button ${isExpanded ? 'expanded' : ''}`} onClick={handleToggle}> Detailed cooling recommendations: 
+          <button className={`toggle-button ${isExpanded ? 'expanded' : ''}`} onClick={handleToggle}> Key recommendations: 
           <i className={`fa fa-caret-down icon ${isExpanded ? 'expanded' : ''}`} />
           </button>
           <Collapse isOpened={isExpanded}>

@@ -9,7 +9,7 @@ function RecommendationsToggle() {
 
   const recommendations = {
     'Green: \n Exercise is safe.': [
-      { type: 'icon', content: faGlassWater },
+      { type: 'icon', content: faGlassWater},
       { type: 'text', content: '  Stay hydrated' },
       { type: 'icon', content: faShirt },
       { type: 'text', content: '  Wear light clothing' },

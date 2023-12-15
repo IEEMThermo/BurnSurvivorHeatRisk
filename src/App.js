@@ -7,16 +7,18 @@ import Calculate from './Input';
 import ReactDOM from 'react-dom';
 import { ResultColorProvider } from './Components/ResultColorContext';
 
+
+
 function MainApp() {
   return (
-    <div>
+      <div>
         <Header />
         <Photo />
         <ResultColorProvider>
           <Calculate />
         </ResultColorProvider>
         <Footer />
-    </div>
+      </div>
   );
 }
 

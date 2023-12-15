@@ -54,7 +54,9 @@ function Calculate() {
   const [showHelpClo, setShowHelpClo] = useState(false);
   const helpTextMet = '';
   const helpTextClo = '';
-  const helpTextBurnSurface = `Provide a value between 1 and 100 that represents the percentage of body surface area burn. Do not include the % symbol.
+  const helpTextBurnSurface = `Provide a value between 1 and 100 that represents the percentage of body surface area burn.
+                             <br>
+                              Do not include the % symbol.
                               <br> <br>
                               If you are unsure of your burn surface area, visit one of these resources to estimate that area: <br>
                               <br>
@@ -540,6 +542,7 @@ function Calculate() {
               scales: {
                 y: {
                   display: false,
+                  min: 37
                 },
               x: {
                 ticks: {

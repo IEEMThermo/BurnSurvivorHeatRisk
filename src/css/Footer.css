@@ -4,8 +4,8 @@
 .footer {
   background-color: #333;
   color: #fff;
-  padding: 15px;
-  font-size: 16px;
+  padding: 10px;
+  font-size: 13px;
   bottom: 0;
 }
 
@@ -20,9 +20,13 @@
   text-decoration: none;
 }
 
+.acknowledgements-link{
+  color: white;
+}
+
 @media screen and (max-width: 480px) {
   .footer p,
   .footer a.website-link {
-    font-size: 14px;
+    font-size: 13px;
   }
 }

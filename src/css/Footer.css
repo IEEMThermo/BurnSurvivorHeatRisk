@@ -10,7 +10,8 @@
 }
 
 /* Change link color on hover */
-.footer a.website-link:hover {
+.footer a.website-link:hover, 
+.acknowledgements-link:hover {
   color: #ff5733; 
 }
 
@@ -22,6 +23,7 @@
 
 .acknowledgements-link{
   color: white;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 480px) {

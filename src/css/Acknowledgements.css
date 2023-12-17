@@ -1,0 +1,35 @@
+/* Acknowledgements.css */
+.acknowledgement-title {
+  width: 100%; /* Use full width of the parent container */
+  text-align: center; /* Center the text */
+  margin-bottom: 30px; /* Add some margin for separation */
+  color: rgb(52, 49, 49);
+}
+
+.acknowledgements-container {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.acknowledgements-content p {
+  text-align: center;
+  background-color: rgba(134, 156, 188, 0.39);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-size: 17px;
+  padding: 12px;
+  margin-bottom: 10px; /* Add margin between paragraphs */
+  border-radius: 3px;
+}
+
+.acknowledgements-container p:hover {
+  background-color:  rgba(52, 111, 199, 0.39);
+  transform: scale(1.1);
+}
+
+.project-funding {
+  width: 650px; /* Use full width of the parent container */
+  text-align: center; /* Center the text */
+  margin: 0 auto;
+  color: rgb(52, 49, 49);
+  margin-bottom: 20px;
+}

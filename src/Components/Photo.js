@@ -19,7 +19,7 @@ function Photo() {
   }, []);
 
   // Define the dimensions based on the screen width
-  const photoWidth = windowWidth > 750 ? '55%' : '80%';
+  const photoWidth = windowWidth > 750 ? '52%' : '80%';
   const photoHeight = windowWidth > 750 ? '100px' : '80px';
 
   return (

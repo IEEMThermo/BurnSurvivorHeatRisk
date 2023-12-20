@@ -1,46 +1,59 @@
 import React from 'react';
 import { useResultColor } from './ResultColorContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGlassWater, faShirt, faPause, faFan, faHand } from '@fortawesome/free-solid-svg-icons';
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//import { faGlassWater, faShirt, faPause, faFan, faHand } from '@fortawesome/free-solid-svg-icons';
 import '../css/ToggleBar.css';
+
+//import icons
+import { ReactComponent as Water } from '../SVG/water.svg';
+import { ReactComponent as Fan } from '../SVG/fan.svg';
+import { ReactComponent as Shirt } from '../SVG/shirt.svg';
+import { ReactComponent as Stop } from '../SVG/stop.svg';
+import { ReactComponent as Pause } from '../SVG/pause.svg';
 
 function RecommendationsToggle() {
   const { resultColor } = useResultColor();
 
   const recommendations = {
     'Green: \n Exercise is safe.': [
-      { type: 'icon', content: faGlassWater},
+      { type: 'icon', content:  <Water />},
       { type: 'text', content: '  Stay hydrated' },
-      { type: 'icon', content: faShirt },
-      { type: 'text', content: '  Wear light clothing' },
+      { type: 'icon', content: <Fan /> },
+      { type: 'text', content: '  Wear light clothing' }, 
     ],
     'Red: \n Unsafe exposure. Extreme Caution.': [
-      { type: 'icon', content: faHand },
+      { type: 'icon', content: <Stop /> },
       { type: 'text', content: '  Consider Suspending Play' },
     ],
     'Yellow: \n Caution, regularly hydrate.': [
-      { type: 'icon', content: faGlassWater },
+      
+      { type: 'icon', content:  <Water /> },
       { type: 'text', content: '  Stay hydrated' },
-      { type: 'icon', content: faShirt },
+      { type: 'icon', content: <Shirt /> },
       { type: 'text', content: '  Wear light clothing' },
-      { type: 'icon', content: faPause },
+      { type: 'icon', content: <Pause /> },
       { type: 'text', content: '  Rest Breaks' },
     ],
     'Orange: \n Strong caution, regularly drink fluids, take frequent rest breaks, consider active cooling i.e., water spray.': [
-      { type: 'icon', content: faGlassWater },
+      { type: 'icon', content:  <Water /> },
       { type: 'text', content: '  Stay hydrated' },
-      { type: 'icon', content: faShirt },
+      { type: 'icon', content: <Shirt /> },
       { type: 'text', content: '  Wear light clothing' },
-      { type: 'icon', content: faPause },
+      { type: 'icon', content: <Pause /> },
       { type: 'text', content: '  Rest Breaks' },
-      { type: 'icon', content: faFan },
+      { type: 'icon', content: <Fan /> },
       { type: 'text', content: '  Active Cooling' },
     ],
   };
 
   const renderRecommendationItem = (item, index) => {
     if (item.type === 'icon') {
-      return <FontAwesomeIcon key={index} icon={item.content} />;
+      // Apply the CSS class to the icon
+      return (
+        <span key={index} className="icon-container">
+          {item.content}
+        </span>
+      );
     } else if (item.type === 'text') {
       return <span key={index}>{item.content}</span>;
     }
@@ -61,7 +74,7 @@ function RecommendationsToggle() {
       }
       return pairs;
     } else {
-      return <p>No recommendations for this color.</p>;
+      return <p>No recommendations yet.</p>;
     }
   };
 

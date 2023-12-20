@@ -26,24 +26,20 @@
   align-items: center;
   background-color: #ffffff;
   border: 2px solid rgb(204, 204, 204);
-  padding: 20px;
+  padding: 15px;
   border-radius: 6px;
   width: 100%;
+  margin-bottom: 5px;
   text-align: left;
   transition: transform 0.9s ease;
   box-sizing: border-box;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 
 
 .toggle-bar button:hover {
   background-color: #708be48c;
-}
-
-.icon {
-  margin-left: auto;
-  transition: transform 0.5s ease;
 }
 
 .icon.expanded {
@@ -57,6 +53,24 @@
 .toggle-bar button.expanded .detailed-descriptions {
   visibility: visible;
   transition: all 0.7s ease-in-out;
+}
+
+/* Style for the icon container */
+.icon-container {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 5px; /* Adjust margin as needed */
+}
+
+/* Ensure all icons are the same size */
+.icon-container svg {
+  width: 30px; /* Adjust the size as needed */
+  height: 30px; /* Adjust the size as needed */
+}
+
+/* Optional: Add spacing between icon and text */
+.recommendation-pair {
+  margin-bottom: 15px; /* Adjust spacing as needed */
 }
 
 @media (max-width: 900px) {

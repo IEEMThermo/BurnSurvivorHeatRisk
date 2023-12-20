@@ -7,7 +7,7 @@
 }
 
 .acknowledgements-container {
-  max-width: 450px;
+  max-width: 45%;
   margin: 0 auto;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .project-funding {
-  width: 650px; /* Use full width of the parent container */
+  width: 70%; /* Use full width of the parent container */
   text-align: center; /* Center the text */
   margin: 0 auto;
   color: rgb(52, 49, 49);

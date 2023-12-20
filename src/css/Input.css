@@ -58,6 +58,31 @@ input[type="text"],
   flex: 1;
 }
 
+i.fa-magnifying-glass {
+  pointer-events: none;
+}
+
+i.fa-person-running {
+  pointer-events: none;
+}
+
+i.fa-shirt {
+  pointer-events: none;
+}
+
+i.fa-person  {
+  pointer-events: none;
+}
+
+i.fa-cloud-sun {
+  pointer-events: none;
+}
+
+i.fa-clock {
+  pointer-events: none;
+}
+
+
 .met-help-button,
 .clo-help-button,
 .burnsurface-help-button {
@@ -174,9 +199,9 @@ input[type="text"],
 
 
 .search-results {
-  width: 67%;
+  width: 68%;
   margin: 0 auto;
-  margin-left: 24%;
+  margin-left: 23%;
   top: 100%; 
   max-height: 300px; 
   overflow-y: auto; 
@@ -376,7 +401,7 @@ input[type="text"],
    }
 
    .search-results{
-     width: 57%;
+     width: 58%;
    }
 
    .search-results li{

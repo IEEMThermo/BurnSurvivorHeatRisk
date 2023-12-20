@@ -18,7 +18,7 @@ function RecommendationsToggle() {
     'Green: \n Exercise is safe.': [
       { type: 'icon', content:  <Water />},
       { type: 'text', content: '  Stay hydrated' },
-      { type: 'icon', content: <Fan /> },
+      { type: 'icon', content: <Shirt /> },
       { type: 'text', content: '  Wear light clothing' }, 
     ],
     'Red: \n Unsafe exposure. Extreme Caution.': [

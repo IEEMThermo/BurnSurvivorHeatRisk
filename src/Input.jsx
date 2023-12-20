@@ -414,7 +414,8 @@ function Calculate() {
           <option value="5">Very High </option>
           </optgroup>
         </select>
-        <i className="fa-solid fa-person-running"></i>
+        <i 
+          className="fa-solid fa-person-running"></i>
         <button className='met-help-button' onClick={toggleHelpMet}>?</button>
       </div>
       {showHelpMet && <HelpPopupMet content={helpTextMet} onClose={toggleHelpMet} />}
@@ -423,6 +424,7 @@ function Calculate() {
       <div className='clo_container'>
         <label htmlFor="clothing_input"> Clothing:</label>
         <select
+          id="clothing_input"
           value={value3}
           onChange={(e) => setValue3(e.target.value)}
         >

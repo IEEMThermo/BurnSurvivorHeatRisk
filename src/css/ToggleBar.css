@@ -9,7 +9,7 @@
 .toggle-bar button {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
   border: 2px solid rgb(204, 204, 204);
@@ -52,7 +52,7 @@
 
 .toggle-bar button.expanded .detailed-descriptions {
   visibility: visible;
-  transition: all 0.7s ease-in-out;
+  transition: all 0.9s ease-in-out;
 }
 
 /* Style for the icon container */

@@ -48,7 +48,6 @@ function RecommendationsToggle() {
 
   const renderRecommendationItem = (item, index) => {
     if (item.type === 'icon') {
-      // Apply the CSS class to the icon
       return (
         <span key={index} className="icon-container">
           {item.content}
@@ -63,15 +62,35 @@ function RecommendationsToggle() {
   const getRecommendations = () => {
     if (resultColor in recommendations) {
       const pairs = [];
+      let showDisclaimer = false; // Flag to show the disclaimer
+
       for (let i = 0; i < recommendations[resultColor].length; i += 2) {
+        const content = recommendations[resultColor][i + 1]?.content;
+
         const pair = (
           <div key={i} className="recommendation-pair">
             {renderRecommendationItem(recommendations[resultColor][i], i)}
             {renderRecommendationItem(recommendations[resultColor][i + 1], i + 1)}
           </div>
         );
+
         pairs.push(pair);
+
+        // Check if the content includes "Wear light clothing"
+        if (content && content.toLowerCase().includes('wear light clothing')) {
+          showDisclaimer = true;
+        }
       }
+
+      // Show disclaimer if needed
+      if (showDisclaimer) {
+        pairs.push(
+          <p key="disclaimer" className="clothing-disclaimer">
+            If the activity you are performing requires clothing that is not considered light clothing, disregard the light clothing recommendation.
+          </p>
+        );
+      }
+
       return pairs;
     } else {
       return <p>No recommendations yet.</p>;

@@ -73,6 +73,12 @@
   margin-bottom: 15px; /* Adjust spacing as needed */
 }
 
+.clothing-disclaimer {
+  font-size: 12px;
+  color: black; 
+
+}
+
 @media (max-width: 900px) {
   .toggle-bar{
     width: 80%;

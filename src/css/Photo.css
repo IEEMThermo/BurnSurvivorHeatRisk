@@ -7,9 +7,9 @@
 }
 
 /* mobile devices */
-@media screen and (max-width: 550px) {
-  .img{
-    width: 300px;
+@media screen and (max-width: 500px) {
+  .photo img{
+    width: 200px;
   }
 }
 

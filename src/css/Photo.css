@@ -6,17 +6,18 @@
   max-width: 650px;
 }
 
-/* mobile devices */
-@media screen and (max-width: 500px) {
-  .photo img{
-    width: 40px;
-  }
-}
-
 /* ipads/tablet devices */
 @media screen and (max-width: 750px) {
   .photo img{
    width: 550px;
+  }
+}
+
+
+/* mobile devices */
+@media screen and (max-width: 500px) {
+  .photo img{
+    width: 350px;
   }
 }
 

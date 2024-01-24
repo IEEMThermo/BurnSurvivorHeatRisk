@@ -23,7 +23,7 @@ function RecommendationsToggle() {
     ],
     'Red: \n Unsafe exposure. Extreme Caution.': [
       { type: 'icon', content: <Stop /> },
-      { type: 'text', content: '  Consider Suspending Activity' },
+      { type: 'text', content: '  Consider suspending activity' },
     ],
     'Yellow: \n Caution, regularly hydrate.': [
       

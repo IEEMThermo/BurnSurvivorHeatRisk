@@ -1,0 +1,36 @@
+
+/* default */
+.photo img {
+  width: 100%;
+  height: auto;
+  max-width: 650px;
+}
+
+/* mobile devices */
+@media screen and (max-width: 550px) {
+  .img{
+    width: 400px;
+  }
+}
+
+/* ipads/tablet devices */
+@media screen and (max-width: 750px) {
+  .photo img{
+   width: 550px;
+  }
+}
+
+/* small screens/laptops devices */
+@media screen and (max-width: 1024px) {
+  
+}
+
+/* desktops/larger screens */
+@media screen and (max-width: 1200px) {
+  
+}
+
+/* extra large screens/ TV  */
+@media screen and (max-width: 1500px) {
+  
+}

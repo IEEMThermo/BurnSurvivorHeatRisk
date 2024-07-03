@@ -7,6 +7,8 @@
 }
 
 .search-container,
+.height_container,
+.weight_container,
 .met_container,
 .clo_container,
 .burnsa_container,
@@ -35,6 +37,8 @@ input[type="text"],
 
 
 .search-container label,
+.height_container label,
+.weight_container label,
 .met_container label,
 .clo_container label,
 .burnsa_container label,
@@ -45,6 +49,8 @@ input[type="text"],
 
 
 .search-container i.fa-solid,
+.height_container i.fa-solid,
+.weight_container i.fa-solid,
 .met_container i.fa-solid,
 .clo_container i.fa-solid,
 .burnsa_container i.fa-solid,
@@ -59,6 +65,14 @@ input[type="text"],
 }
 
 i.fa-magnifying-glass {
+  pointer-events: none;
+}
+
+i.fa-ruler {
+  pointer-events: none;
+}
+
+i.fa-weight-scale {
   pointer-events: none;
 }
 
@@ -82,6 +96,18 @@ i.fa-clock {
   pointer-events: none;
 }
 
+.height-unit, 
+.weight-unit{
+  background-color: #17699d;
+  color: #f4f4f4;
+  font-size: 20px;
+  padding: 10px;
+  width: 60px;
+  border: none;
+  border-radius: 10%;
+  cursor: pointer;
+  margin-right: 2%;
+}
 
 .met-help-button,
 .clo-help-button,
@@ -298,7 +324,9 @@ i.fa-clock {
 
   .met-help-button,
   .clo-help-button,
-  .burnsurface-help-button{
+  .burnsurface-help-button,
+  .height-unit,
+  .weight-unit{
     margin-right: 12%;
   }
 
@@ -320,7 +348,7 @@ i.fa-clock {
 
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
   .inputBox{
     width: 80%;
    }
@@ -332,7 +360,9 @@ i.fa-clock {
 
   .met-help-button,
   .clo-help-button,
-  .burnsurface-help-button{
+  .burnsurface-help-button,
+  .height-unit,
+  .weight-unit{
     margin-right: 7%;
   }
   

@@ -21,6 +21,8 @@ function Calculate() {
   const [value4, setValue4] = useState('');
   const [value5, setValue5] = useState('');
   const [value6, setValue6] = useState('');
+  const [value7, setValue7] = useState('');
+  const [value8, setValue8] = useState('');
 
   //result state variables
   const [result, setResult] = useState('');
@@ -36,6 +38,11 @@ function Calculate() {
   const [coordinates, setCoordindates] = useState([]);
   const [name, setName] = useState('');
   const [coord, setCoord] = useState('');
+
+  //unit toggles for height and weight
+  const [heightUnit, changeHeightUnit] =  useState(false);
+  const [weightUnit, changeWeightUnit] =  useState(false);
+  const [isHover, setHover] = useState(false);
 
   //graph state variables
   const [label, setLabel] = useState('');
@@ -159,6 +166,20 @@ function Calculate() {
     //change text in input field
     setQuery(searchResults[item]);
   };
+
+  //function to change units
+  const toggleHeightUnit = () => {
+    changeHeightUnit(!heightUnit);
+  }
+  const toggleWeightUnit = () => {
+    changeWeightUnit(!weightUnit);
+  }
+  const onMouseEnter = () => {
+    setHover(true);
+  }
+  const onMouseLeave = () => {
+    setHover(false);
+  }
 
   // Function to expand detailed descriptions button
   const handleToggle = () => {
@@ -397,6 +418,49 @@ function Calculate() {
             )}
           </div>
         </div>
+        {/*Height input*/}
+        <div className='height_container'>
+          <label htmlFor="height_input">Height: </label>
+          <input
+            type="text"
+            id="height_input"
+            placeholder="Enter Height"
+            value={value4}
+            onChange={(e) => setValue7(e.target.value)}
+          />
+        <i className="fa-solid fa-ruler"></i>
+        <button
+          onClick={toggleHeightUnit} 
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          className={`height-unit ${heightUnit ? 'cm' : 'in'}`}
+        >
+          {heightUnit ? 'cm' : 'in'} 
+        </button>
+        {isHover && <div className="hover-text">Click to toggle units</div>}
+      </div>
+
+      {/*Weight input*/}
+      <div className='weight_container'>
+          <label htmlFor="weight_input">Weight: </label>
+          <input
+            type="text"
+            id="weight_input"
+            placeholder="Enter Weight"
+            value={value4}
+            onChange={(e) => setValue8(e.target.value)}
+          />
+        <i className="fa-solid fa-weight-scale"></i>
+        <button
+          onClick={toggleWeightUnit} 
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          className={`weight-unit ${weightUnit ? 'kg' : 'lbs'}`}
+        >
+          {weightUnit ? 'kg' : 'lbs'} 
+        </button>
+        {isHover && <div className="hover-text">Click to toggle units</div>}
+      </div>
 
       {/*Metabolic Rate input*/}
       <div className='met_container'>

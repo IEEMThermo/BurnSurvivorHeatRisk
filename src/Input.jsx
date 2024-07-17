@@ -42,7 +42,8 @@ function Calculate() {
   //unit toggles for height and weight
   const [heightUnit, changeHeightUnit] =  useState(false);
   const [weightUnit, changeWeightUnit] =  useState(false);
-  const [isHover, setHover] = useState(false);
+  const [isHover, setHover] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   //graph state variables
   const [label, setLabel] = useState('');
@@ -174,11 +175,23 @@ function Calculate() {
   const toggleWeightUnit = () => {
     changeWeightUnit(!weightUnit);
   }
-  const onMouseEnter = () => {
-    setHover(true);
+
+  const onMouseEnter = (val, event) => {
+    let newVal = val
+    if (val === 1 && heightUnit){
+      newVal = val + 2;
+    }
+
+    if (val === 2 && weightUnit){
+      newVal = val + 2;
+    }
+    setHover(newVal);
+    if (event) {
+      setMousePosition({ x: event.clientX + 10, y: event.clientY + 10 });
+    }
   }
   const onMouseLeave = () => {
-    setHover(false);
+    setHover(0);
   }
 
   // Function to expand detailed descriptions button
@@ -203,7 +216,20 @@ function Calculate() {
 
   //Function that calls two_nodes, performs the calculation, and sets the result
   const calculate = async () => {
-    let resultNum = await two_nodes(coord, value2, value3, value4, value5, value6);
+    //adjust height and weight units
+    let height = value7;
+    let weight = value8;
+
+    if (!heightUnit){
+      height = value7 * 2.54;
+    }
+    if (!weightUnit){
+      weight = value8/2.2;
+    }
+
+    let body_surface_area = 0.007184 * Math.pow(value7, 0.725) * Math.pow(value8, 0.425);
+
+    let resultNum = await two_nodes(coord, value2, value3, value4, value5, value6, body_surface_area);
     let resultColor = getColor(resultNum);
     setResult(resultColor);
     setResultColor(resultColor);
@@ -370,6 +396,17 @@ function Calculate() {
       window.alert("Enter an option for Activity Environment.");
       return; 
     }
+    if (isNaN(value7) || !value7) {
+      // Display an alert
+      window.alert("Enter a valid value for Height.");
+      return; 
+    }
+    if (isNaN(value8) || !value8) {
+      // Display an alert
+      window.alert("Enter a valid value for Weight.");
+      return; 
+    }
+
     calculate();
     GraphCalculate();
     toggleDivVisibility();
@@ -425,20 +462,33 @@ function Calculate() {
             type="text"
             id="height_input"
             placeholder="Enter Height"
-            value={value4}
+            value={value7}
             onChange={(e) => setValue7(e.target.value)}
           />
         <i className="fa-solid fa-ruler"></i>
         <button
           onClick={toggleHeightUnit} 
-          onMouseEnter={onMouseEnter}
+          onMouseEnter={(event) => onMouseEnter(1, event)}
           onMouseLeave={onMouseLeave}
           className={`height-unit ${heightUnit ? 'cm' : 'in'}`}
         >
           {heightUnit ? 'cm' : 'in'} 
         </button>
-        {isHover && <div className="hover-text">Click to toggle units</div>}
       </div>
+      {isHover === 1 && (
+          <div 
+            className="hover-text"
+            style={{ left: `${mousePosition.x}px`, top: `${mousePosition.y}px` }}
+          >
+          Click to change units to cm</div>
+      )}
+      {isHover === 3 && (
+          <div 
+            className="hover-text"
+            style={{ left: `${mousePosition.x}px`, top: `${mousePosition.y}px` }}
+          >
+          Click to change units to in</div>
+      )}
 
       {/*Weight input*/}
       <div className='weight_container'>
@@ -447,20 +497,34 @@ function Calculate() {
             type="text"
             id="weight_input"
             placeholder="Enter Weight"
-            value={value4}
+            value={value8}
             onChange={(e) => setValue8(e.target.value)}
           />
         <i className="fa-solid fa-weight-scale"></i>
         <button
           onClick={toggleWeightUnit} 
-          onMouseEnter={onMouseEnter}
+          onMouseEnter={(event) => onMouseEnter(2, event)}
           onMouseLeave={onMouseLeave}
           className={`weight-unit ${weightUnit ? 'kg' : 'lbs'}`}
         >
           {weightUnit ? 'kg' : 'lbs'} 
         </button>
-        {isHover && <div className="hover-text">Click to toggle units</div>}
       </div>
+      
+      {isHover === 2 && (
+          <div 
+            className="hover-text"
+            style={{ left: `${mousePosition.x}px`, top: `${mousePosition.y}px` }}
+          >
+          Click to change units to kg</div>
+      )}
+      {isHover === 4 && (
+          <div 
+            className="hover-text"
+            style={{ left: `${mousePosition.x}px`, top: `${mousePosition.y}px` }}
+          >
+          Click to change units to lbs</div>
+      )}
 
       {/*Metabolic Rate input*/}
       <div className='met_container'>

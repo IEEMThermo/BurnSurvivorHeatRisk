@@ -109,6 +109,17 @@ i.fa-clock {
   margin-right: 2%;
 }
 
+.hover-text {
+  position: absolute;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  font-size: 10px;
+  border-radius: 5px;
+  pointer-events: none;
+  z-index: 1000;
+}
+
 .met-help-button,
 .clo-help-button,
 .burnsurface-help-button {
@@ -311,7 +322,7 @@ i.fa-clock {
 
 
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 2000px) {
  .inputBox{
   width: 80%;
  }
@@ -348,7 +359,42 @@ i.fa-clock {
 
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1500px) {
+  .inputBox{
+    width: 80%;
+   }
+  
+  input[type="text"],
+  select {
+    width: 60%;
+  }
+
+  .met-help-button,
+  .clo-help-button,
+  .burnsurface-help-button,
+  .height-unit,
+  .weight-unit{
+    margin-right: 7%;
+  }
+  
+   .search-results{
+    width: 58%;
+  }
+
+  .graph-container {
+    width: 90%; 
+  }
+
+  .result-box,
+  .Green,
+  .Orange,
+  .Yellow,
+  .Red {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 925px) {
   .inputBox{
     width: 80%;
    }

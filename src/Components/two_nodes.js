@@ -345,7 +345,7 @@ export async function two_nodes(zipcode, met, clo, burn_surface, length_time_sim
 }
 
 //Function that gets the calculates the forecasted risk 
-export function two_nodes_forecast(array, met, clo, burn_surface, length_time_simulation, shade_sun, wme=0,body_surface_area=1.7,p_atmospheric=101325,body_position="standing",max_skin_blood_flow=90){
+export function two_nodes_forecast(array, met, clo, burn_surface, length_time_simulation, shade_sun, body_surface_area , wme = 0, p_atmospheric=101325,body_position="standing",max_skin_blood_flow=90){
     //cast variables
     met = parseFloat(met);
     clo = parseFloat(clo);

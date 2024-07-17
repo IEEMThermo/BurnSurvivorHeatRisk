@@ -288,7 +288,8 @@ function Calculate() {
 
         times[i] = forecastData[i][4];
         //get t_core for the ith hour
-        forecastResult[i] = two_nodes_forecast(forecastParameters, value2, value3, value4, value5, value6);
+        let body_surface_area = 0.007184 * Math.pow(value7, 0.725) * Math.pow(value8, 0.425);
+        forecastResult[i] = two_nodes_forecast(forecastParameters, value2, value3, value4, value5, value6, body_surface_area);
       }
 
       const currentTime = new Date();

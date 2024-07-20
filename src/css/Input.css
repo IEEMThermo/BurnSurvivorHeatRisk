@@ -335,7 +335,7 @@ i.fa-clock {
 /*///////////////*/
 
 @media screen and (max-width: 1024px) {
-
+  
   .city_container .search-container label,
   .height_container label,
   .weight_container label,
@@ -426,6 +426,10 @@ i.fa-clock {
      text-align: center;
      font-size: 12px;
      margin-right: 17px;
+     padding-block-start: 2px;
+     padding-block-end: 3px;
+     padding-inline-start: 6px;
+     padding-inline-end: 6px;
    }
 
    .height-unit,
@@ -450,7 +454,6 @@ i.fa-clock {
       font-size: 10px;
     }
    
- 
    .result-box,
    .Green,
    .Orange,

@@ -1,9 +1,17 @@
 
 .inputBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 100%;
-  width: 60%;
-  flex-direction: column; 
-  margin: 0 auto;
+}
+
+.city_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
 }
 
 .search-container,
@@ -16,14 +24,31 @@
 .shade_container{
   display: flex;
   flex-wrap: wrap;
-  align-items: center; 
+  align-items: center;
+  width: 100%;
   padding: 11px;
+}
+
+.city_container .search-container{
+  position: relative;
+}
+
+.city_container .search-container label,
+.height_container label,
+.weight_container label,
+.met_container label,
+.clo_container label,
+.burnsa_container label,
+.duration_container label,
+.shade_container label {
+  width: 18%;
+  margin-left: 11%;
 }
 
 
 input[type="text"],
   select {
-    width: 70%;
+    width: 40%;
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -35,20 +60,7 @@ input[type="text"],
     color: rgb(104, 99, 99);
 }
 
-
-.search-container label,
-.height_container label,
-.weight_container label,
-.met_container label,
-.clo_container label,
-.burnsa_container label,
-.duration_container label,
-.shade_container label {
-  width: 21%; 
-}
-
-
-.search-container i.fa-solid,
+.city_container i.fa-solid,
 .height_container i.fa-solid,
 .weight_container i.fa-solid,
 .met_container i.fa-solid,
@@ -106,9 +118,8 @@ i.fa-clock {
   border: none;
   border-radius: 10%;
   cursor: pointer;
-  margin-right: 2%;
+  margin-right: 20%;
 }
-
 .hover-text {
   position: absolute;
   padding: 10px;
@@ -129,7 +140,7 @@ i.fa-clock {
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  margin-right: 2%;
+  margin-right: 21.6%;
 }
 
 .calculate {
@@ -155,12 +166,6 @@ i.fa-clock {
 .calculate-button:hover {
   background-color: rgb(16, 75, 163);
   transform: scale(1.1);
-}
-
-.result-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .result-box {
@@ -234,46 +239,52 @@ i.fa-clock {
   font-size: 25px;
 }
 
-
 .search-results {
-  width: 68%;
-  margin: 0 auto;
-  margin-left: 23%;
-  top: 100%; 
+  z-index: 1; 
+  width: 40%;
+  display: flex;
+  align-items: center;
   max-height: 300px; 
   overflow-y: auto; 
   background: #fff;
   border: 1px solid black;
   border-top: none;
   border-radius: 0 0 8px 8px; 
-  z-index: 1; 
+  margin-right: 0.5% ;
+  margin-top: -5px;
   box-sizing: border-box;
 }
-
-
 .search-results ul {
+  width: 96%;
   border-bottom:1px rgb(104, 99, 99);
-  list-style: circle;
+  list-style: none;
+  padding-left: 2%;
 }
-
 /* Add styles for individual search result items */
 .search-results li {
-  font-size: 15px;
-  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 8px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
-
 /* Add hover effect for search result items */
 .search-results li:hover {
-  background-color: #007bff;
+  background-color: rgba(46, 141, 243, 0.7); 
 }
 
 .graph-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-height: 1000px;
+}
+
+.graph-container .forecast-chart {
+  height: 60vh;
   width: 780px;
-  margin: 0 auto; 
-  padding: 20px;
-  text-align: center; 
+  margin-bottom: 3vh;
 }
 
 .graph-axis {
@@ -319,146 +330,94 @@ i.fa-clock {
   background-color: #b83c55;
 }
 
+/*///////////////*/
+/* media queries */
+/*///////////////*/
 
+@media screen and (max-width: 1024px) {
 
-
-@media screen and (max-width: 2000px) {
- .inputBox{
-  width: 80%;
- }
-
+  .city_container .search-container label,
+  .height_container label,
+  .weight_container label,
+  .met_container label,
+  .clo_container label,
+  .burnsa_container label,
+  .duration_container label,
+  .shade_container label {
+    width: 16%;
+    margin-left: 8%;
+    font-size: 14px;
+  }
   input[type="text"],
   select {
-    width: 60%;
+    width: 50%;
+    font-size: 14px;
   }
-
-
+  .search-results {
+    width: 50%;
+    margin-left: 0.5%;
+  }
+  .search-results li {
+    font-size: 14px;
+  }
+  
   .met-help-button,
   .clo-help-button,
-  .burnsurface-help-button,
+  .burnsurface-help-button{
+    margin-right: 13.5%;
+    font-size: 18px;
+  }
   .height-unit,
   .weight-unit{
     margin-right: 12%;
+    font-size: 18px;
+    padding: 10px;
+    width: 48px;
   }
-
-  .search-results{
-    width: 58%;
-  }
-
-  .graph-container {
-    width: 90%; 
-  }
-
   .result-box,
-  .Green,
-  .Orange,
-  .Yellow,
-  .Red {
-    width: 75%;
-  }
-
-}
-
-@media screen and (max-width: 1500px) {
-  .inputBox{
-    width: 80%;
+   .Green,
+   .Orange,
+   .Yellow,
+   .Red{
+     width: 70%;
+     font-size: 15px;
    }
-  
-  input[type="text"],
-  select {
-    width: 60%;
-  }
 
-  .met-help-button,
-  .clo-help-button,
-  .burnsurface-help-button,
-  .height-unit,
-  .weight-unit{
-    margin-right: 7%;
-  }
-  
-   .search-results{
-    width: 58%;
-  }
-
-  .graph-container {
-    width: 90%; 
-  }
-
-  .result-box,
-  .Green,
-  .Orange,
-  .Yellow,
-  .Red {
-    width: 75%;
-  }
-}
-
-@media screen and (max-width: 925px) {
-  .inputBox{
-    width: 80%;
+   .graph-container .forecast-chart{
+    width: 82%;
    }
-  
-  input[type="text"],
-  select {
-    width: 60%;
-  }
-
-  .met-help-button,
-  .clo-help-button,
-  .burnsurface-help-button,
-  .height-unit,
-  .weight-unit{
-    margin-right: 7%;
-  }
-  
-   .search-results{
-    width: 58%;
-  }
-
-  .graph-container {
-    width: 90%; 
-  }
-
-  .result-box,
-  .Green,
-  .Orange,
-  .Yellow,
-  .Red {
-    width: 75%;
-  }
 }
 
-
-
-@media screen and (max-width: 550px) {
-  .inputBox{
-   width: 100%;
-  }
- 
+@media screen and (max-width: 530px) {
    input[type="text"],
    select {
      width: 60%;
-     font-size: 14px;
+     font-size: 10px;
      padding: 10px;
    }
 
-   .search-container label,
+   .city_container .search-container label,
+   .height_container label,
+   .weight_container label,
    .met_container label,
    .clo_container label,
    .burnsa_container label,
    .duration_container label,
    .shade_container label{
-      font-size: 14px;
+      font-size: 10px;
+      width: 18%;
+      margin-left: 4%;
    }
 
    .search-container i.fa-solid,
+   .height_container i.fa-solid,
+   .weight_container i.fa-solid,
    .met_container i.fa-solid,
    .clo_container i.fa-solid,
    .burnsa_container i.fa-solid,
    .duration_container i.fa-solid,
    .shade_container i.fa-solid {
-     right: 30px;
+     right: 35px;
    }
 
    .met-help-button,
@@ -466,31 +425,31 @@ i.fa-clock {
    .burnsurface-help-button{
      text-align: center;
      font-size: 12px;
-     margin-right: 12px;
-     width: 3px;
-     height: 3vh;
+     margin-right: 17px;
+   }
+
+   .height-unit,
+   .weight-unit{
+     text-align: center;
+     font-size: 12px;
+     padding: 5px;
+     width: 25px;
+     margin-right: 14px;
    }
 
    .calculate-button{
-    padding: 10px 15px;
-    font-size: 14px;
-   }
+      padding: 10px 15px;
+      font-size: 14px;
+    }
 
-   .search-results{
-     width: 58%;
-   }
-
-   .search-results li{
-    font-size: 14px;
-   }
+    .search-results {
+      width: 60%;
+      margin-left: 9.5%;
+    }
+    .search-results li {
+      font-size: 10px;
+    }
    
-   .forecast-title {
-    font-size: 15px;
-   }
-
-   .graph-container {
-     width: 90%; 
-   }
  
    .result-box,
    .Green,
@@ -501,12 +460,12 @@ i.fa-clock {
      font-size: 15px;
    }
 
-   .legend{
-    font-size: 10px;
-   }
-
    .calculate-button{
     padding: 10px 20px;
   }
- }
 
+  .graph-container .forecast-chart{
+    width: 90%;
+    margin-right: 7%;
+   }
+ }

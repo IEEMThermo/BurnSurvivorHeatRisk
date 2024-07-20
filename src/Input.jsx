@@ -421,40 +421,38 @@ function Calculate() {
   return (
     <div>
       <div className='inputBox'>
-        <div className='city_container'>
-          <div style={cursorStyle}>
-            <div className="search-container">
+        <div className='city_container' style={cursorStyle}>
+          <div className="search-container">
             <label htmlFor="city_input"> City:</label>
-              <input
-                type="text"
-                placeholder="Search..."
-                value={query}
-                onChange={handleInputChange}
-                onFocus={() => {
-                  setQuery(''); // Clear the search bar input
-                  // Clear the search results when focusing on the search bar
-                  setSearchResults([]);
-                }}          
-              />
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </div>
-            {/* Display search results */}
-            {searchResults.length > 0 && (
-              <div className='search-results'>
-                <ul>
-                  {searchResults.map((result, index) => (
-                    <li
-                      key={index}
-                      onClick={() => handleItemClick(index)}
-                      className={selectedItem === result ? 'selected' : ''}
-                    >
-                      {result}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            <input
+              type="text"
+              placeholder="Search..."
+              value={query}
+              onChange={handleInputChange}
+              onFocus={() => {
+                setQuery(''); // Clear the search bar input
+                // Clear the search results when focusing on the search bar
+                setSearchResults([]);
+              }}          
+            />
+            <i className="fa-solid fa-magnifying-glass"></i>
           </div>
+          {/* Display search results */}
+          {searchResults.length > 0 && (
+            <div className='search-results'>
+              <ul>
+                {searchResults.map((result, index) => (
+                  <li
+                    key={index}
+                    onClick={() => handleItemClick(index)}
+                    className={selectedItem === result ? 'selected' : ''}
+                  >
+                    {result}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
         {/*Height input*/}
         <div className='height_container'>
@@ -661,37 +659,38 @@ function Calculate() {
         <div className="graph-container">
           <p className="forecast-title">Forecasted heat risk for the next 24 hours</p>
           <div className="legend">
-          <span className="legend-color green"></span> Low
-          <span className="legend-color yellow"></span> Moderate
-          <span className="legend-color orange"></span> High
-          <span className="legend-color red"></span> Extreme
-        </div>
-          <Line
-            data={chart}
-            options={{
-              // ... (other chart options)
-              scales: {
-                y: {
-                  display: false,
-                  min: 37
-                },
-              x: {
-                ticks: {
-                  font: {
-                    size: getFontSize(), // Adjust this value to set the desired font size
+            <span className="legend-color green"></span> Low
+            <span className="legend-color yellow"></span> Moderate
+            <span className="legend-color orange"></span> High
+            <span className="legend-color red"></span> Extreme
+          </div>
+          <div className="forecast-chart">
+            <Line
+              data={chart}
+              options={{
+                maintainAspectRatio: false,
+                // ... (other chart options)
+                scales: {
+                  y: {
+                    display: false,
+                    min: 37
+                  },
+                x: {
+                  ticks: {
+                    font: {
+                      size: getFontSize(), // Adjust this value to set the desired font size
+                    },
                   },
                 },
-               },
-              },
-              plugins: {
-                legend: {
-                  display: false,
                 },
-              },
-            }}
-          >
-          
-          </Line>
+                plugins: {
+                  legend: {
+                    display: false,
+                  },
+                },
+              }}
+            ></Line>
+          </div>
         </div>
       )}
       

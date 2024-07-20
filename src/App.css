@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center container horizontally */
+  align-items: center; /* Center container vertically */
+  height: 100vh; /* Full viewport height */
 }
 
 .App-logo {

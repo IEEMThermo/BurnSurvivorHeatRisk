@@ -7,6 +7,7 @@ import Calculate from './Input';
 import ReactDOM from 'react-dom';
 import { ResultColorProvider } from './Components/ResultColorContext';
 import Acknowledgements from './Components/Acknowledgements'; // Import the Acknowledgements component
+import Welcome from './Components/Welcome';
 
 function MainApp() {
   return (
@@ -14,10 +15,9 @@ function MainApp() {
       <div>
         <Header />
         <Routes>
-
-        
+          <Route path ="/" element = {<Welcome />} />
           <Route
-            path="/"
+            path="/main"
             element={
               <div>
                 <Photo />

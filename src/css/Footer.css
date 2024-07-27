@@ -11,7 +11,8 @@
 
 /* Change link color on hover */
 .footer a.website-link:hover, 
-.acknowledgements-link:hover {
+.acknowledgements-link:hover,
+.welcome-page-link:hover {
   color: #ff5733; 
 }
 
@@ -22,6 +23,11 @@
 }
 
 .acknowledgements-link{
+  color: white;
+  text-decoration: none;
+}
+
+.welcome-page-link {
   color: white;
   text-decoration: none;
 }

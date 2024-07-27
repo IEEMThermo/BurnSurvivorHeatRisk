@@ -15,7 +15,7 @@ function Acknowledgements() {
 
   return (
     <div>
-      <Link to="/" style={backButtonStyle}>Go back</Link>
+      <Link to="/main" style={backButtonStyle}>Go back</Link>
       <div className="acknowledgement-title">
         <h1> Acknowledgements</h1>
         <h3> The following individuals/entities were instrumental in developing this webpage:</h3>

@@ -16,6 +16,11 @@ function Footer() {
             Click to View Acknowledgements
           </Link>
         </p>
+        <p>
+          <Link to= "/" className= "welcome-page-link">
+            Click to View Welcome Page
+          </Link>
+        </p>
         <p className="disclaimer">
           The provided information are guidelines and should not be viewed as recommendations.
           Individuals should stop physical activity if they are feeling overheated.

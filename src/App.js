@@ -6,6 +6,7 @@ import Footer from './Components/Footer';
 import Calculate from './Input';
 import ReactDOM from 'react-dom';
 import { ResultColorProvider } from './Components/ResultColorContext';
+import Welcome from './Components/Welcome'
 import Acknowledgements from './Components/Acknowledgements'; // Import the Acknowledgements component
 
 function MainApp() {
@@ -14,6 +15,8 @@ function MainApp() {
       <div>
         <Header />
         <Routes>
+
+        
           <Route
             path="/"
             element={

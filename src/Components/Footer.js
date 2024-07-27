@@ -7,7 +7,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <p>&copy; 2023 Burn Survivor Activity Risk Calculator</p>
+        <p>&copy; 2024 Burn Survivor Heat Risk Calculator</p>
         <a href="https://www.texashealth.org/ieem/Research/Thermal-and-Vascular-Physiology-Laboratory" target="_blank" rel="noopener noreferrer" className="website-link">
           Click to Visit our Website
         </a>

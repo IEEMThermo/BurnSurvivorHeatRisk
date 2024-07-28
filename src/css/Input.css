@@ -190,7 +190,6 @@ i.fa-clock {
   padding: 15px;
   border-radius: 5px; 
   border: 2px solid rgb(255, 255, 255);
-  background-color: #b83c55;
   color: white;
   font-size: 25px;
   height: 15vh;
@@ -206,7 +205,6 @@ i.fa-clock {
   padding: 15px; 
   border-radius: 5px; 
   border: 2px solid rgb(253, 253, 253);
-  background-color: #f17d3f;
   color: white;
   font-size: 25px;
   height: 15vh;
@@ -222,7 +220,6 @@ i.fa-clock {
   padding: 15px; 
   border-radius: 5px; 
   border: 2px solid rgb(255, 255, 255);
-  background-color: #ddc53a;
   font-size: 25px;
   height: 15vh;
 }
@@ -238,7 +235,6 @@ i.fa-clock {
   height: 15vh;
   border-radius: 5px;
   border: 2px solid rgb(255, 255, 255);
-  background-color: #7bc774;
   color: white;
   font-size: 25px;
 }

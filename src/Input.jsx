@@ -6,12 +6,12 @@ import { useResultColor } from './Components/ResultColorContext';
 import RecommendationsToggle from './Components/RecommendationsToggle';
 //import './css/ToggleBar.css';
 import { Collapse } from 'react-collapse';
-import axios from 'axios';
 import HelpPopup from './Components/HelpPopup';
 import HelpPopupClothing from './Components/HelpPopupClothing';
 import HelpPopupMet from './Components/HelpPopupMet';
 import { Line } from 'react-chartjs-2';
 import {Chart, registerables} from 'chart.js'; 
+import citiesData from './cities.json';
 
 //Function responsible for displaying all the input boxes, and calculate functions
 function Calculate() {
@@ -25,15 +25,19 @@ function Calculate() {
   const [value8, setValue8] = useState('');
 
   //result state variables
+  const [tCore, setTCore] = useState('');
   const [result, setResult] = useState('');
   const [textColor, setTextColor] = useState('result-box');
   const [resultText, setResultText] = useState('');
   const {resultColor, setResultColor} = useResultColor();
   const [isExpanded, setIsExpanded] = React.useState(false);
+  const [gradientColor, setGradientColor] = useState('');
 
   // search bar state variables
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [cityData, setCityData] = useState([]);
+  const [cityList, setCityList] = useState([]);
   const [selectedItem, setSelectedItem] = useState([]);
   const [coordinates, setCoordindates] = useState([]);
   const [name, setName] = useState('');
@@ -77,64 +81,47 @@ function Calculate() {
   // Update the data for the green, yellow, orange, and red portions on the graph
   const scaledGreen = Array(8).fill(37.5);
   const scaledYellow = Array(8).fill(38);
-  const scaledOrange = Array(8).fill(38.5);
+  const scaledOrange = Array(8).fill(38.5);//split here >=
   const scaledRed = Array(8).fill(39);
 
-  //Function that gets city based off of user input
-  async function getCityName(zipcode) {
-    const zipcodeStr = String(zipcode);
-
-    //open weather api call
-    const CITY_BASE_URL = "https://api.openweathermap.org/geo/1.0/direct?q=";
-    const API_KEY = process.env.REACT_APP_API_KEY;
-    const city_url = `${CITY_BASE_URL}${zipcodeStr}&limit=5&appid=${API_KEY}`;
-
-    //query search results
-    try {
-      const response = await axios.get(city_url);
-      const data = response.data;
-      let dataElements = ["", "", "", "", ""];
-      let coordinates = ["", "", "", "", ""];
-      data.forEach((item, index) => {
-        if (item.state === undefined) {
-          dataElements[index] = String(item.name + ", " + item.country);
-        } else {
-          dataElements[index] = String(item.name + ", " + item.state + ", " + item.country + ".   ");
-        }
-        coordinates[index] = String(item.lat + "," + item.lon);
-      });
-
-      setCoordindates(coordinates);
-      return dataElements;
-    } catch (error) {
-      console.error('Error:', error);
-      throw error;
-    }
-  }
-
-  let dataset = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]];
+  useEffect(() => {
+    // Set cityList with the imported JSON data
+    setCityData(citiesData);
+  }, []);
 
   //handle search bar input change
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setQuery(inputValue);
-    handleSearch(inputValue); // Call the provided callback with the query
+    getCityList(inputValue); // Call the provided callback with the query
   };
 
-  // Define a callback function to handle search
-  const handleSearch = async (query) => {
-    try{
-        if(query === ""){
-            dataset = [["", ""], ["", ""], ["", ""], ["", ""], ["", ""]];
-        } else {
-            dataset = await getCityName(query);
-            setSearchResults(dataset);
-        }
-        
-    }catch(error){
-        throw error;
+  const getCityList = async (query) => {
+    if (query.length > 0) {
+      const filtered = cityData
+        .filter(city =>
+          city.name.toLowerCase().includes(query.toLowerCase())
+        )
+        .slice(0, 5); // Limit to 5 cities
+
+        let dataElements = ["", "", "", "", ""];
+        let coordinates = ["", "", "", "", ""];
+
+        filtered.forEach((item, index) => {
+          if (item.admin1 === undefined) {
+            dataElements[index] = String(item.name + ", " + item.country);
+          } else {
+            dataElements[index] = String(item.name + ", " + item.admin1 + ", " + item.country + ".   ");
+          }
+          coordinates[index] = String(item.lat + "," + item.lng);
+        });
+  
+        setCoordindates(coordinates);
+      setSearchResults(dataElements);
+    } else {
+      setCityList([]);
     }
-  }
+  };
 
   // Dynamically set font size based on screen width
   const getFontSize = () => {
@@ -221,53 +208,21 @@ function Calculate() {
     let weight = value8;
 
     if (!heightUnit){
-      height = value7 * 2.54;
+      height = height * 2.54;
     }
     if (!weightUnit){
-      weight = value8/2.2;
+      weight = weight / 2.2;
     }
+    
+    let body_surface_area = 0.007184 * Math.pow(height, 0.725) * Math.pow(weight, 0.425);
+    let resultNum = await two_nodes(coord, value2, value3, value4, value5, value6, body_surface_area, weight);
 
-    let body_surface_area = 0.007184 * Math.pow(value7, 0.725) * Math.pow(value8, 0.425);
+    console.log(resultNum);
+    setTCore(resultNum);
 
-    let resultNum = await two_nodes(coord, value2, value3, value4, value5, value6, body_surface_area);
     let resultColor = getColor(resultNum);
     setResult(resultColor);
     setResultColor(resultColor);
-
-    let textColor = "";
-    let resultText = "";
-    
-    //Set result based off of color range
-    switch(resultColor) {
-      case 'Green: \n Exercise is safe.':
-        textColor = "Green";
-        resultText = "Estimated heat stress risk is low";
-        setTextColor(textColor);
-        setResultText(resultText);
-        break;
-      case 'Red: \n Unsafe exposure. Extreme Caution.':
-        textColor = "Red";
-        resultText = "Estimated heat stress risk is extreme";
-        setTextColor(textColor);
-        setResultText(resultText);
-        break;
-      case 'Yellow: \n Caution, regularly hydrate.':
-        textColor = "Yellow";
-        resultText = "Estimated heat stress risk is moderate";
-        setTextColor(textColor);
-        setResultText(resultText);
-        break;
-      case 'Orange: \n Strong caution, regularly drink fluids, take frequent rest breaks, consider active cooling i.e., water spray.':
-        textColor = "Orange";
-        resultText = "Estimated heat stress risk is high";
-        setTextColor(textColor);
-        setResultText(resultText);
-        break;
-      default:
-        setTextColor("");
-        setResultText("");
-        break;
-    }
   };
 
   //Function that calculates t_core over time and generates graph
@@ -275,21 +230,37 @@ function Calculate() {
     //create y and x parameters for graph
     let forecastParameters = new Array (4);
     let forecastResult = new Array(8);
-    const times = new Array(8);
+
+      //adjust height and weight units
+      let height = value7;
+      let weight = value8;
+  
+      if (!heightUnit){
+        height = height * 2.54;
+      }
+      if (!weightUnit){
+        weight = weight / 2.2;
+      }
     
     //call the open weather api
     try{
       let forecastData = await fetchForecastData(coord);
+      let body_surface_area = 0.007184 * Math.pow(height, 0.725) * Math.pow(weight, 0.425);
+      forecastResult[0] = await two_nodes(coord, value2, value3, value4, value5, value6, body_surface_area, weight);
 
-      for (let i = 0; i < 8; i++){
+      for (let i = 0; i < 7; i++){
         for (let j = 0; j < 4; j++){
           forecastParameters[j] = forecastData[i][j];
         }
 
-        times[i] = forecastData[i][4];
         //get t_core for the ith hour
-        let body_surface_area = 0.007184 * Math.pow(value7, 0.725) * Math.pow(value8, 0.425);
-        forecastResult[i] = two_nodes_forecast(forecastParameters, value2, value3, value4, value5, value6, body_surface_area);
+        forecastResult[i + 1] = two_nodes_forecast(forecastParameters, value2, value3, value4, value5, value6, body_surface_area, weight);
+      }
+
+      for (let i = 0; i < 8; i++){
+        if (forecastResult[i] > 39){
+          forecastResult[i] = 39;
+        }
       }
 
       const currentTime = new Date();
@@ -300,11 +271,11 @@ function Calculate() {
           hour = hour - 24;
         }
         
-      // Convert to 12-hour format and add AM/PM
-      let displayHour = hour % 12 || 12;
-      let ampm = hour < 12 ? "AM" : "PM";
-    
-      timesArray[i] = `${displayHour}:${"00"} ${ampm}`;
+        // Convert to 12-hour format and add AM/PM
+        let displayHour = hour % 12 || 12;
+        let ampm = hour < 12 ? "AM" : "PM";
+      
+        timesArray[i] = `${displayHour}:${"00"} ${ampm}`;
         hour = hour + 3;
       }
 
@@ -317,47 +288,157 @@ function Calculate() {
   };
 
   // Create the chart data
-  let chart = {
-
-    labels: label,
-    datasets: [
-      {
-        label: 't_core',
-        data: data,
-        borderColor: 'rgba(0,0,0,1)',
-        backgroundColor: 'rgba(0, 0, 0, 1)', //
-      },
-      //green (less than or equal to 37.5)
-      {
-        data: scaledGreen,
-        fill: true,
-        backgroundColor: '#7bc774', //
-        pointRadius: 0,
-      },
-      //yellow (37.51 - 37.99)
-      {
-        data: scaledYellow,
-        fill: true,
-        backgroundColor: '#ddc53a', //
-        pointRadius: 0,
-      },
-      //orange (38 - 38.49)
-      {
-        data: scaledOrange,
-        fill: true,
-        backgroundColor: '#f17d3f', //
-        pointRadius: 0,
-      },
-      //red (38.5)
-      {
-        data: scaledRed,
-        fill: true,
-        backgroundColor: '#b83c55', //
-        pointRadius: 0,
-      },
-    ],
-  };
   Chart.register(...registerables);
+
+  const chartRef = useRef(null);
+  const chartInstanceRef = useRef(null);
+
+  useEffect(() => {
+    // Destroy existing chart instance if it exists
+    if (chartRef.current){
+        if (chartInstanceRef.current) {
+          chartInstanceRef.current.destroy();
+        }
+      const ctx = chartRef.current.getContext('2d');
+
+      // Create gradient
+      // Create gradient
+      let gradient;
+
+      const createGradient = (ctx, chartArea) => {
+        const { top, bottom } = chartArea;
+        gradient = ctx.createLinearGradient(0, bottom, 0, top);
+        gradient.addColorStop(0.125, '#7bc774');    // Green at the bottom (37)
+        gradient.addColorStop(0.375, '#ddc53a'); // Yellow
+        gradient.addColorStop(0.625, '#f17d3f');  // Orange
+        gradient.addColorStop(0.875, '#b83c55');    // Red at the top (39)
+      };
+
+      const getGradientColorAtY = (y, chartArea) => {
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = 1;
+        tempCanvas.height = chartArea.bottom - chartArea.top;
+        const tempCtx = tempCanvas.getContext('2d');
+
+        // Draw the gradient on the temporary canvas
+        createGradient(tempCtx, chartArea);
+        tempCtx.fillStyle = gradient;
+        tempCtx.fillRect(0, 0, 1, tempCanvas.height);
+
+        // Get the color data at the specified y-coordinate
+        const yInTempCanvas = tempCanvas.height - (y - 37)/2 * tempCanvas.height;
+        console.log(yInTempCanvas + " " + tempCanvas.height)
+        const imageData = tempCtx.getImageData(0, yInTempCanvas, 1, 1).data;
+        return `rgba(${imageData[0]}, ${imageData[1]}, ${imageData[2]}, ${imageData[3] / 255})`;
+      };
+
+      
+      const chartData = {
+        labels: label,
+        datasets: [{
+          label: 't_core',
+          data: data,
+          borderColor: 'rgba(0,0,0,1)',
+          fill: true,
+          tension: 0.4
+        }]
+      };
+
+      // Create chart
+      chartInstanceRef.current = new Chart(ctx, {
+        type: 'line',
+        data: chartData,
+        options: {
+          maintainAspectRatio: false,
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              display: false,
+              min: 37,
+              max: 39,
+            }
+          },
+          elements: {
+            line: {
+              borderColor: 'rgba(0,0,0,1)',
+              borderWidth: 2
+            },
+            point: {
+              radius: 0
+            }
+          },
+          layout: {
+            padding: {
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0
+            }
+          }
+        },
+        plugins: [{
+          id: 'backgroundPlugin',
+          beforeDraw: (chart) => {
+            const { ctx, chartArea: { top, bottom, left, right } } = chart;
+            console.log(bottom);
+            createGradient(ctx, chart.chartArea);
+            ctx.save();
+            ctx.fillStyle = gradient;
+            ctx.fillRect(left, top, right - left, bottom - top);
+            ctx.restore();
+          }
+        }]
+      });
+
+      const yValue = data[0];
+      const gradientColor = getGradientColorAtY(yValue, chartInstanceRef.current.chartArea);
+      setGradientColor(gradientColor);
+      console.log(`Gradient color at y=${yValue}: ${gradientColor}`);
+    }
+  }, [label, data]);
+
+  useEffect(() => {
+    let textColor = "";
+    let resultText = "";
+    
+    //Set result based off of color range
+    switch(resultColor) {
+      case 'Green: \n Exercise is safe.':
+        textColor = "Green";
+        resultText = "Estimated heat stress risk is low to moderate";
+        setTextColor(textColor);
+        setResultText(resultText);
+        break;
+      case 'Red: \n Unsafe exposure. Extreme Caution.':
+        textColor = "Red";
+        resultText = "Estimated heat stress risk is high to extreme";
+        setTextColor(textColor);
+        setResultText(resultText);
+        break;
+      case 'Yellow: \n Caution, regularly hydrate.':
+        textColor = "Yellow";
+        resultText = "Estimated heat stress risk is low to moderate";
+        setTextColor(textColor);
+        setResultText(resultText);
+        break;
+      case 'Orange: \n Strong caution, regularly drink fluids, take frequent rest breaks, consider active cooling i.e., water spray.':
+        textColor = "Orange";
+        resultText = "Estimated heat stress risk is high to extreme";
+        setTextColor(textColor);
+        setResultText(resultText);
+        break;
+      default:
+        setTextColor("");
+        setResultText("");
+        break;
+    }
+  }, [resultColor]);
+
 
   //When user presses the "calculate" button
   const handleButtonClick = () => {
@@ -624,17 +705,17 @@ function Calculate() {
       </div>
 
       <div className='result' ref={resultBoxRef}>
-        <div className={textColor} style={{flexDirection: 'column', alignItems: 'center' }}>
-          {resultText === "Estimated heat stress risk is low" && (
+        <div className={textColor} style={{flexDirection: 'column', alignItems: 'center', backgroundColor: gradientColor }}>
+          {data[0] < 37.5 && (
             <><p>{resultText}</p><i className="fa-solid fa-face-smile fa-bounce" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
           )}
-          {resultText === "Estimated heat stress risk is moderate" && (
+          {data[0] >= 37.5 && data[0] < 38 && (
             <><p>{resultText}</p><i className="fa-solid fa-bottle-water fa-bounce" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
           )}
-          {resultText === "Estimated heat stress risk is high" && (
+          {data[0] >= 38 && data[0] < 38.5 && (
             <><p>{resultText}</p><i className="fa fa-exclamation-triangle fa-bounce" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
           )}
-          {resultText === "Estimated heat stress risk is extreme" && (
+          {data[0] >= 38.5 && (
             <><p>{resultText}</p><i className="fa-solid fa-hand fa-beat" style={{ fontSize: '40px', marginBottom: '10px' }}></i></>
           )}
         </div>
@@ -658,38 +739,8 @@ function Calculate() {
       {isDivVisible && (
         <div className="graph-container">
           <p className="forecast-title">Forecasted heat risk for the next 24 hours</p>
-          <div className="legend">
-            <span className="legend-color green"></span> Low
-            <span className="legend-color yellow"></span> Moderate
-            <span className="legend-color orange"></span> High
-            <span className="legend-color red"></span> Extreme
-          </div>
           <div className="forecast-chart">
-            <Line
-              data={chart}
-              options={{
-                maintainAspectRatio: false,
-                // ... (other chart options)
-                scales: {
-                  y: {
-                    display: false,
-                    min: 37
-                  },
-                x: {
-                  ticks: {
-                    font: {
-                      size: getFontSize(), // Adjust this value to set the desired font size
-                    },
-                  },
-                },
-                },
-                plugins: {
-                  legend: {
-                    display: false,
-                  },
-                },
-              }}
-            ></Line>
+            <canvas ref={chartRef}></canvas>
           </div>
         </div>
       )}

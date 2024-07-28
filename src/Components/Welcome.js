@@ -13,7 +13,8 @@ function Welcome() {
         The provided information are guidelines and should not be viewed as recommendations or medical advice. Individuals should stop physical activity and seek cooler conditions if they are feeling overheated or unwell.
       </p>
       <Link to="/main">
-        <button>Go to Main Page</button>
+        <button class="welcome-button">
+            Go to Main Page</button>
       </Link>
     </div>
   );

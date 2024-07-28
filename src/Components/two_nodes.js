@@ -13,6 +13,7 @@ export function two_nodes_optimized(
     vapor_pressure,
     wme,
     body_surface_area,
+    weight,
     p_atmospheric,
     body_position,
     calculate_ce = false,
@@ -23,7 +24,7 @@ export function two_nodes_optimized(
     // Initial variables as defined in the ASHRAE 55-2020
     const air_speed = Math.max(v, 0.1);
     const k_clo = 0.25;
-    const body_weight = 70; // body weight in kg
+    const body_weight = weight; // body weight in kg
     const met_factor = 58.2; // met conversion factor
     const sbc = 0.000000056697; // Stefan-Boltzmann constant (W/m2K4)
     const c_sw = 170; // driving coefficient for regulatory sweating
@@ -289,7 +290,7 @@ export function two_nodes_optimized(
 }
 
 //Function that casts parameters and calls two_nodes_optimized 
-export async function two_nodes(zipcode, met, clo, burn_surface, length_time_simulation, shade_sun,body_surface_area, wme = 0, p_atmospheric=101325,body_position="standing",max_skin_blood_flow=90){
+export async function two_nodes(zipcode, met, clo, burn_surface, length_time_simulation, shade_sun,body_surface_area, weight, wme = 0, p_atmospheric=101325,body_position="standing",max_skin_blood_flow=90){
     //cast variables
     met = parseFloat(met);
     clo = parseFloat(clo);
@@ -331,10 +332,9 @@ export async function two_nodes(zipcode, met, clo, burn_surface, length_time_sim
             v = 0;
             rh = .40;
         }
-
+        
         const vapor_pressure = (rh * Math.exp(18.6686 - (4030.183 / (tdb + 235.0)))) / 100;
-
-        let t_core = two_nodes_optimized(tdb,tr,v,met,clo,burn_surface,length_time_simulation,vapor_pressure,wme,body_surface_area,p_atmospheric,body_position);
+        let t_core = two_nodes_optimized(tdb,tr,v,met,clo,burn_surface,length_time_simulation,vapor_pressure,wme,body_surface_area, weight ,p_atmospheric,body_position);
             
         return t_core;
 
@@ -345,7 +345,7 @@ export async function two_nodes(zipcode, met, clo, burn_surface, length_time_sim
 }
 
 //Function that gets the calculates the forecasted risk 
-export function two_nodes_forecast(array, met, clo, burn_surface, length_time_simulation, shade_sun, body_surface_area , wme = 0, p_atmospheric=101325,body_position="standing",max_skin_blood_flow=90){
+export function two_nodes_forecast(array, met, clo, burn_surface, length_time_simulation, shade_sun, body_surface_area , weight, wme = 0, p_atmospheric=101325,body_position="standing",max_skin_blood_flow=90){
     //cast variables
     met = parseFloat(met);
     clo = parseFloat(clo);
@@ -392,7 +392,7 @@ export function two_nodes_forecast(array, met, clo, burn_surface, length_time_si
 
         const vapor_pressure = (rh * Math.exp(18.6686 - (4030.183 / (tdb + 235.0)))) / 100;
 
-        let t_core = two_nodes_optimized(tdb,tr,v,met,clo,burn_surface,length_time_simulation,vapor_pressure,wme,body_surface_area,p_atmospheric,body_position);
+        let t_core = two_nodes_optimized(tdb,tr,v,met,clo,burn_surface,length_time_simulation,vapor_pressure,wme,body_surface_area, weight, p_atmospheric,body_position);
 
         //level the forecasted graph at 40
         if(t_core >= 39){
@@ -443,6 +443,7 @@ export async function fetchForecastData(zipcode) {
 
   
     const url = `${BASE_URL}lat=${zipcodeStr[0]}&lon=${zipcodeStr[1]}&appid=${API_KEY}`;
+    console.log(url);
   
     const forecast = new Array(8);
     
@@ -451,7 +452,6 @@ export async function fetchForecastData(zipcode) {
       .then(response => {
   
       const data = response.data;
-      console.log(data);
   
       for (let i = 0; i < 8; i++){
           forecast[i] = new Array(5);

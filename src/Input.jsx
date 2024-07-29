@@ -428,7 +428,7 @@ function Calculate() {
         break;
       case 'Orange: \n Strong caution, regularly drink fluids, take frequent rest breaks, consider active cooling i.e., water spray.':
         textColor = "Orange";
-        resultText = "Estimated heat stress risk is high to extreme";
+        resultText = "Estimated heat stress risk is low to moderate";
         setTextColor(textColor);
         setResultText(resultText);
         break;

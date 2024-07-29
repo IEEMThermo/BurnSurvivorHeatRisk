@@ -443,7 +443,6 @@ export async function fetchForecastData(zipcode) {
 
   
     const url = `${BASE_URL}lat=${zipcodeStr[0]}&lon=${zipcodeStr[1]}&appid=${API_KEY}`;
-    console.log(url);
   
     const forecast = new Array(8);
     

@@ -240,25 +240,25 @@ i.fa-clock {
 }
 
 .search-results {
-  z-index: 1; 
   width: 40%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  max-height: 300px; 
+  max-height: 185px; 
   overflow-y: auto; 
   background: #fff;
   border: 1px solid black;
   border-top: none;
   border-radius: 0 0 8px 8px; 
   margin-right: 0.5% ;
-  margin-top: -5px;
   box-sizing: border-box;
 }
 .search-results ul {
   width: 96%;
+  margin-top: -1.5px;
   border-bottom:1px rgb(104, 99, 99);
   list-style: none;
-  padding-left: 2%;
+  padding-left: 0.5%;
 }
 /* Add styles for individual search result items */
 .search-results li {
@@ -356,6 +356,7 @@ i.fa-clock {
   .search-results {
     width: 50%;
     margin-left: 0.5%;
+    max-height: 170px; 
   }
   .search-results li {
     font-size: 14px;
@@ -449,6 +450,7 @@ i.fa-clock {
     .search-results {
       width: 60%;
       margin-left: 9.5%;
+      max-height: 165px; 
     }
     .search-results li {
       font-size: 10px;
@@ -460,7 +462,7 @@ i.fa-clock {
    .Yellow,
    .Red {
      width: 70%;
-     font-size: 15px;
+     font-size: 14px;
    }
 
    .calculate-button{

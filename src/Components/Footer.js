@@ -8,6 +8,14 @@ function Footer() {
     <footer className="footer">
       <div className="footer-content">
         <p>&copy; 2024 Burn Survivor Heat Risk Calculator</p>
+        <p>
+          <Link to= "/" className= "welcome-page-link">
+            Click to View Welcome Page
+          </Link>
+        </p>
+        <a href="https://www.phoenix-society.org" target="_blank" rel="noopener noreferrer" className="resource-link">
+          Click to View Additional Resources
+        </a>
         <a href="https://www.texashealth.org/ieem/Research/Thermal-and-Vascular-Physiology-Laboratory" target="_blank" rel="noopener noreferrer" className="website-link">
           Click to Visit our Website
         </a>
@@ -16,11 +24,7 @@ function Footer() {
             Click to View Acknowledgements
           </Link>
         </p>
-        <p>
-          <Link to= "/" className= "welcome-page-link">
-            Click to View Welcome Page
-          </Link>
-        </p>
+        
         <p className="disclaimer">
           The provided information are guidelines and should not be viewed as recommendations.
           Individuals should stop physical activity if they are feeling overheated.

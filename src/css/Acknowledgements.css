@@ -11,17 +11,40 @@
   margin: 0 auto;
 }
 
-.acknowledgements-content p {
+.iee,
+.ps,
+.us,
+.utd
+ {
   text-align: center;
   background-color: rgba(134, 156, 188, 0.39);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  font-size: 17px;
-  padding: 12px;
+  padding: 6px;
   margin-bottom: 10px; /* Add margin between paragraphs */
   border-radius: 3px;
 }
 
-.acknowledgements-container p:hover {
+h5
+ {
+  font-size: 15px;
+  margin-top: 9px;
+  margin-bottom: 9px; /* Add margin between paragraphs */
+ }
+
+.iee p,
+.ps p,
+.us p,
+.utd p
+ {
+  font-size: 15px;
+  margin-top: 6px;
+  margin-bottom: 6px; /* Add margin between paragraphs */
+ }
+
+.iee:hover,
+.ps:hover,
+.us:hover,
+.utd:hover {
   background-color:  rgba(52, 111, 199, 0.39);
   transform: scale(1.1);
 }

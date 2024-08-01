@@ -23,7 +23,7 @@ function RecommendationsToggle() {
     ],
     'Red: \n Unsafe exposure. Extreme Caution.': [
       { type: 'icon', content: <Stop /> },
-      { type: 'text', content: '  Consider suspending activity' },
+      { type: 'text', content: '  Consider suspending activity until outside temperatures are cooler or move indoors.' },
     ],
     'Yellow: \n Caution, regularly hydrate.': [
       
@@ -31,6 +31,8 @@ function RecommendationsToggle() {
       { type: 'text', content: '  Stay hydrated' },
       { type: 'icon', content: <Shirt /> },
       { type: 'text', content: '  Wear light clothing' },
+      { type: 'icon', content: <Fan /> },
+      { type: 'text', content: '  Active Cooling' },
     ],
     'Orange: \n Strong caution, regularly drink fluids, take frequent rest breaks, consider active cooling i.e., water spray.': [
       { type: 'icon', content:  <Water /> },

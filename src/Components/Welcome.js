@@ -14,7 +14,7 @@ function Welcome() {
       </p>
       <Link to="/main">
         <button class="welcome-button">
-            Go to Main Page</button>
+            Go to Heat Risk Calculator</button>
       </Link>
     </div>
   );

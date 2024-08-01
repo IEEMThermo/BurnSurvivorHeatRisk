@@ -97,12 +97,11 @@ function Calculate() {
   };
 
   const getCityList = async (query) => {
-    if (query.length > 0) {
+    if (query.length > 2) {
       const filtered = cityData
         .filter(city =>
           city.name.toLowerCase().includes(query.toLowerCase())
-        )
-        .slice(0, 5); // Limit to 5 cities
+        ); // Limit to 5 cities
 
         let dataElements = ["", "", "", "", ""];
         let coordinates = ["", "", "", "", ""];
@@ -258,8 +257,8 @@ function Calculate() {
       }
 
       for (let i = 0; i < 8; i++){
-        if (forecastResult[i] > 39){
-          forecastResult[i] = 39;
+        if (forecastResult[i] > 40.5){
+          forecastResult[i] = 40.5;
         }
       }
 
@@ -326,7 +325,7 @@ function Calculate() {
         tempCtx.fillRect(0, 0, 1, tempCanvas.height);
 
         // Get the color data at the specified y-coordinate
-        const yInTempCanvas = tempCanvas.height - (y - 37)/2 * tempCanvas.height;
+        const yInTempCanvas = tempCanvas.height - (y - 36.5)/4 * tempCanvas.height;
         console.log(yInTempCanvas + " " + tempCanvas.height)
         const imageData = tempCtx.getImageData(0, yInTempCanvas, 1, 1).data;
         return `rgba(${imageData[0]}, ${imageData[1]}, ${imageData[2]}, ${imageData[3] / 255})`;
@@ -357,10 +356,17 @@ function Calculate() {
             }
           },
           scales: {
+            x: {
+              ticks: {
+                font: {
+                  size: 16 // Set this to your desired font size
+                }
+              }
+            },
             y: {
               display: false,
-              min: 37,
-              max: 39,
+              min: 36.5,
+              max: 40.5,
             }
           },
           elements: {
@@ -738,7 +744,13 @@ function Calculate() {
       {/*Forecasted Risk Graph */}
       {isDivVisible && (
         <div className="graph-container">
-          <p className="forecast-title">Forecasted heat risk for the next 24 hours</p>
+          <p className="forecast-title">Forecasted heat risk</p>
+          <div className="legend">
+            <span className="legend-color green"></span> Low
+            <span className="legend-color yellow"></span> Moderate
+            <span className="legend-color orange"></span> High
+            <span className="legend-color red"></span> Extreme
+          </div>
           <div className="forecast-chart">
             <canvas ref={chartRef}></canvas>
           </div>

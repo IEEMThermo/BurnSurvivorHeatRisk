@@ -22,13 +22,28 @@ function Acknowledgements() {
       </div>
       <div className="acknowledgements-container">
         <div className="acknowledgements-content">
-          <p>Dr. Josh Foster – King’s College London</p>
-          <p>Ms. Erika Mii – University of Texas at Dallas</p>
-          <p>Dr. Craig Crandall – University of Texas Southwestern Medical Center and Institute for Exercise and Environmental Medicine – Texas Health Presbyterian Hospital Dallas</p>
-          <p>Dr. Federico Tartarini – University of Sydney</p>
-          <p>Dr. Ollie Jay – University of Sydney</p>
-          <p>Ms. Amy Acton – The Phoenix Society</p>
-          <p>The Phoenix Society</p>
+          <div className="iee">
+            <h5>University of Texas Southwestern Medical Center and Institute for Exercise and Environmental Medicine – Texas Health Presbyterian Hospital Dallas</h5>
+            <p>Dr. Craig Crandall</p>
+            <p>Dr. Josh Foster</p>
+            <p>Dr. Zachary McKenna</p>
+            <p>Dr. Whitley Atkins</p>
+            <p>Dr. Elizabeth Gideon</p>
+          </div>
+          <div className="ps">
+            <h5>The Phoenix Society for Burn Survivors</h5>
+            <p>Ms. Amy Acton</p>
+          </div>
+          <div className="us">
+            <h5>University of Sydney</h5>
+            <p>Dr. Federico Tartarini</p>
+            <p>Dr. Ollie Jay</p>
+          </div>
+          <div className="utd">
+            <h5>University of Texas - Dallas</h5>
+            <p>Ms. Erika Mii</p>
+            <p>Mr. Eric Wang</p>
+          </div>
         </div>
       </div>
       <div className="project-funding">

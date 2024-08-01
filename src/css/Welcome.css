@@ -7,16 +7,24 @@
     font-size: 36px;
     margin-bottom: 20px; 
   }
+
+  .welcome-message{
+    margin-top: 50px;
+  }
   
   .welcome-message,
   .welcome-message2 {
-    font-size: 16px;
+    font-size: 20px;
     margin-bottom: 20px;
     line-height: 1.6;
   }
   
+  .welcome-message2{
+    font-weight: bold;
+  }
+
   .welcome-button {
-    padding: 10px 20px;
+    padding: 15px 30px;
     font-size: 16px;
     cursor: pointer;
     background-color: #4caf50;

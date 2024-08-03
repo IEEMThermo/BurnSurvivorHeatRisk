@@ -259,6 +259,8 @@ function Calculate() {
       for (let i = 0; i < 8; i++){
         if (forecastResult[i] > 40.5){
           forecastResult[i] = 40.5;
+        } else if (forecastResult[i] < 36.5){
+          forecastResult[i] = 36.5;
         }
       }
 

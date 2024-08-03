@@ -395,12 +395,12 @@ export function two_nodes_forecast(array, met, clo, burn_surface, length_time_si
         let t_core = two_nodes_optimized(tdb,tr,v,met,clo,burn_surface,length_time_simulation,vapor_pressure,wme,body_surface_area, weight, p_atmospheric,body_position);
 
         //level the forecasted graph at 40
-        if(t_core >= 39){
-            t_core = 39;
+        if(t_core >= 40.5){
+            t_core = 40.5;
         }
 
-        if(t_core <= 37){
-            t_core = 37;
+        if(t_core <= 36.5){
+            t_core = 36.5;
         }
             
         return t_core;

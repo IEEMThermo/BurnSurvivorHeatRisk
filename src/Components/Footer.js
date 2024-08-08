@@ -15,7 +15,7 @@ function Footer() {
         <a href="https://www.phoenix-society.org" target="_blank" rel="noopener noreferrer" className="resource-link">
           Click to View Additional Resources for Burn Survivors
         </a>
-        <a href="https://www.texashealth.org/ieem/Research/Thermal-and-Vascular-Physiology-Laboratory" target="_blank" rel="noopener noreferrer" className="website-link">
+        <a href="https://www.texashealth.org/ieem/Research/Thermal-and-Vascular-Physiology-Laboratory/Current-Research-Opportunities" target="_blank" rel="noopener noreferrer" className="website-link">
           Click to Learn More About Research Opportunities
         </a>
         <p>

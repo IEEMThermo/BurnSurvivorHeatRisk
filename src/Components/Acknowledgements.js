@@ -24,11 +24,11 @@ function Acknowledgements() {
         <div className="acknowledgements-content">
           <div className="iee">
             <h5>University of Texas Southwestern Medical Center and Institute for Exercise and Environmental Medicine – Texas Health Presbyterian Hospital Dallas</h5>
-            <p>Dr. Craig Crandall</p>
-            <p>Dr. Josh Foster</p>
-            <p>Dr. Zachary McKenna</p>
-            <p>Dr. Whitley Atkins</p>
-            <p>Dr. Elizabeth Gideon</p>
+            <p>Craig Crandall, PhD</p>
+            <p>Josh Foster, PhD</p>
+            <p>Zachary McKenna, PhD</p>
+            <p>Whitley Atkins, PhD</p>
+            <p>Elizabeth Gideon, PhD</p>
           </div>
           <div className="ps">
             <h5>The Phoenix Society for Burn Survivors</h5>
@@ -36,8 +36,8 @@ function Acknowledgements() {
           </div>
           <div className="us">
             <h5>University of Sydney</h5>
-            <p>Dr. Federico Tartarini</p>
-            <p>Dr. Ollie Jay</p>
+            <p>Federico Tartarini, PhD</p>
+            <p>Ollie Jay, PhD</p>
           </div>
           <div className="utd">
             <h5>University of Texas - Dallas</h5>
@@ -47,7 +47,7 @@ function Acknowledgements() {
         </div>
       </div>
       <div className="project-funding">
-        <h3>This project was funded by a grant from the National Institute of General Medical Sciences of the National Institutes of Health to Dr. Crandall (RO1GM068865).</h3>
+        <h3>This project was funded by a grant from the National Institute of General Medical Sciences of the National Institutes of Health to Crandall (RO1GM068865).</h3>
       </div>
     </div>
   );

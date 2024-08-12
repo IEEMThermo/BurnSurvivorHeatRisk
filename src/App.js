@@ -8,6 +8,7 @@ import ReactDOM from 'react-dom';
 import { ResultColorProvider } from './Components/ResultColorContext';
 import Acknowledgements from './Components/Acknowledgements'; // Import the Acknowledgements component
 import Welcome from './Components/Welcome';
+import { Helmet } from 'react-helmet';
 
 function MainApp() {
   return (
@@ -15,19 +16,55 @@ function MainApp() {
       <div>
         <Header />
         <Routes>
-          <Route path ="/" element = {<Welcome />} />
+          {/* Route for Welcome Page */}
+          <Route 
+            path="/" 
+            element={
+              <>
+                <Helmet>
+                  <title>Welcome to Burn Survivor Heat Risk</title>
+                  <meta name="description" content="Welcome to the Burn Survivor Heat Risk site, a resource to help you manage and reduce heat risks." />
+                  <link rel="canonical" href="https://burnsurvivorheatrisk.org" />
+                </Helmet>
+                <Welcome />
+              </>
+            } 
+          />
+          
+          {/* Route for Main Page */}
           <Route
             path="/main"
             element={
-              <div>
-                <Photo />
-                <ResultColorProvider>
-                  <Calculate />
-                </ResultColorProvider>
-              </div>
+              <>
+                <Helmet>
+                  <title>Main - Burn Survivor Heat Risk</title>
+                  <meta name="description" content="Learn about heat risks and how to stay safe on the main page of Burn Survivor Heat Risk." />
+                  <link rel="canonical" href="https://burnsurvivorheatrisk.org/main" />
+                </Helmet>
+                <div>
+                  <Photo />
+                  <ResultColorProvider>
+                    <Calculate />
+                  </ResultColorProvider>
+                </div>
+              </>
             }
           />
-          <Route path="/acknowledgements" element={<Acknowledgements />} />
+          
+          {/* Route for Acknowledgements Page */}
+          <Route 
+            path="/acknowledgements" 
+            element={
+              <>
+                <Helmet>
+                  <title>Acknowledgements - Burn Survivor Heat Risk</title>
+                  <meta name="description" content="Acknowledgements for contributions to the Burn Survivor Heat Risk site." />
+                  <link rel="canonical" href="https://burnsurvivorheatrisk.org/acknowledgements" />
+                </Helmet>
+                <Acknowledgements />
+              </>
+            } 
+          />
         </Routes>
         <Footer />
       </div>

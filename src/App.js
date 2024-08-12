@@ -22,7 +22,7 @@ function MainApp() {
             element={
               <>
                 <Helmet>
-                  <title> Burn Survivor Heat Risk Calculator</title>
+                  <title> Heat Risk Calculator</title>
                   <meta name="description" content="A tool to inform burn survivors of heat related risk while performing physical activity and estimates the risk of overheating." />
                   <link rel="canonical" href="https://burnsurvivorheatrisk.org" />
                 </Helmet>

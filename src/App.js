@@ -22,8 +22,8 @@ function MainApp() {
             element={
               <>
                 <Helmet>
-                  <title>Welcome to Burn Survivor Heat Risk</title>
-                  <meta name="description" content="Welcome to the Burn Survivor Heat Risk site, a resource to help you manage and reduce heat risks." />
+                  <title> Burn Survivor Heat Risk Calculator</title>
+                  <meta name="description" content="A tool to inform burn survivors of heat related risk while performing physical activity and estimates the risk of overheating." />
                   <link rel="canonical" href="https://burnsurvivorheatrisk.org" />
                 </Helmet>
                 <Welcome />
@@ -37,9 +37,9 @@ function MainApp() {
             element={
               <>
                 <Helmet>
-                  <title>Main - Burn Survivor Heat Risk</title>
-                  <meta name="description" content="Learn about heat risks and how to stay safe on the main page of Burn Survivor Heat Risk." />
-                  <link rel="canonical" href="https://burnsurvivorheatrisk.org/main" />
+                  <title>Main - Burn Survivor Heat Risk Calculator</title>
+                  <meta name="description" content="Learn about heat risks and how to stay safe on the main calculator page of Burn Survivor Heat Risk." />
+                  <link rel="canonical" href="https://burnsurvivorheatrisk.org" />
                 </Helmet>
                 <div>
                   <Photo />
@@ -57,9 +57,9 @@ function MainApp() {
             element={
               <>
                 <Helmet>
-                  <title>Acknowledgements - Burn Survivor Heat Risk</title>
-                  <meta name="description" content="Acknowledgements for contributions to the Burn Survivor Heat Risk site." />
-                  <link rel="canonical" href="https://burnsurvivorheatrisk.org/acknowledgements" />
+                  <title>Acknowledgements - Burn Survivor Heat Risk Calculator</title>
+                  <meta name="description" content="Acknowledgements for contributions to the Burn Survivor Heat Risk Calculator site." />
+                  <link rel="canonical" href="https://burnsurvivorheatrisk.org" />
                 </Helmet>
                 <Acknowledgements />
               </>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Header from './Components/Header';
 import Photo from './Components/Photo';
 import Footer from './Components/Footer';
@@ -8,6 +8,7 @@ import ReactDOM from 'react-dom';
 import { ResultColorProvider } from './Components/ResultColorContext';
 import Acknowledgements from './Components/Acknowledgements'; // Import the Acknowledgements component
 import Welcome from './Components/Welcome';
+import ReferrerButton from './Components/ReferrerButton';
 import { Helmet } from 'react-helmet';
 
 function MainApp() {
@@ -26,6 +27,7 @@ function MainApp() {
                   <meta name="description" content="A tool to inform burn survivors of heat related risk while performing physical activity and estimates the risk of overheating." />
                   <link rel="canonical" href="https://burnsurvivorheatrisk.org" />
                 </Helmet>
+                <ReferrerButton />
                 <Welcome />
               </>
             } 
@@ -41,6 +43,7 @@ function MainApp() {
                   <meta name="description" content="Learn about heat risks and how to stay safe on the main calculator page of Burn Survivor Heat Risk." />
                   <link rel="canonical" href="https://burnsurvivorheatrisk.org" />
                 </Helmet>
+                <ReferrerButton />
                 <div>
                   <Photo />
                   <ResultColorProvider>

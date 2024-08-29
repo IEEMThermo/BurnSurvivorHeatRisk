@@ -24,10 +24,13 @@ function Footer() {
           </Link>
         </p>
         
-        <p className="disclaimer">
-          The provided information are guidelines and should not be viewed as recommendations or medical advice.
-          Individuals should stop physical activity and seek cooler conditions if they are feeling overheated or unwell.
-        </p>
+        <Link to="/disclaimer" className="disclaimer-link">
+            Click to View Disclaimer
+        </Link>
+
+        <Link to="/privacy" className="privacy-link">
+            Click to View Privacy Policy
+        </Link>
       </div>
     </footer>
   );

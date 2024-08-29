@@ -22,7 +22,9 @@
 .footer a.website-link:hover,
 .footer a.resource-link:hover,  
 .acknowledgements-link:hover,
-.welcome-page-link:hover {
+.welcome-page-link:hover,
+.disclaimer-link:hover,
+.privacy-link:hover {
   color: #ff5733; 
 }
 
@@ -43,6 +45,16 @@
 }
 
 .welcome-page-link {
+  color: white;
+  text-decoration: none;
+}
+
+.disclaimer-link {
+  color: white;
+  text-decoration: none;
+}
+
+.privacy-link {
   color: white;
   text-decoration: none;
 }

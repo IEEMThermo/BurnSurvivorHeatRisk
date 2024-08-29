@@ -8,6 +8,8 @@ import ReactDOM from 'react-dom';
 import { ResultColorProvider } from './Components/ResultColorContext';
 import Acknowledgements from './Components/Acknowledgements'; // Import the Acknowledgements component
 import Welcome from './Components/Welcome';
+import Privacy from './Components/Privacy';
+import Disclaimer from './Components/Disclaimer';
 import ReferrerButton from './Components/ReferrerButton';
 import { Helmet } from 'react-helmet';
 
@@ -65,6 +67,32 @@ function MainApp() {
                   <link rel="canonical" href="https://burnsurvivorheatrisk.org" />
                 </Helmet>
                 <Acknowledgements />
+              </>
+            } 
+          />
+
+          {/* Route for Disclaimer Page */}
+          <Route 
+            path="/disclaimer" 
+            element={
+              <>
+                <Helmet>
+                  <title>Disclaimer - Burn Survivor Heat Risk Calculator</title>
+                </Helmet>
+                <Disclaimer />
+              </>
+            } 
+          />
+
+         {/* Route for Privacy Page */}
+         <Route 
+            path="/privacy" 
+            element={
+              <>
+                <Helmet>
+                  <title>Disclaimer - Burn Survivor Heat Risk Calculator</title>
+                </Helmet>
+                <Privacy />
               </>
             } 
           />

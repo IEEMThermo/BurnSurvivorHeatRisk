@@ -1,6 +1,7 @@
 .welcome-container {
   text-align: center;
   padding: 50px;
+  padding-bottom: 8px;
   }
   
   .welcome-container h1 {
@@ -37,4 +38,10 @@
   
   .welcome-button:hover {
     background-color: #45a049;
+  }
+
+  .welcome-message3{
+    font-size: 8px;
+    font-weight: bold;
+    margin-top: 20px;
   }

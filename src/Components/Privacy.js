@@ -37,11 +37,6 @@ const PrivacyPolicy = () => {
           <h2 className="section-title">Changes to This Policy</h2>
           <p className="section-text">We may update this Privacy Policy from time to time. Any changes will be posted on this page, and the “Effective Date” will be updated accordingly.</p>
         </div>
-
-        <div className="section">
-          <h2 className="section-title">Contact Us</h2>
-          <p className="section-text">If you have any questions or concerns about this Privacy Policy, please contact us at [Your Contact Email].</p>
-        </div>
       </div>
     </div>
   );

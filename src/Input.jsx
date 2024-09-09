@@ -623,11 +623,11 @@ function Calculate() {
         >
           <optgroup>
           <option value=""disabled hidden>Select Activity Level</option>
-          <option value="1">Rest</option>
-          <option value="2">Low</option>
-          <option value="3">Moderate </option>
-          <option value="4">High </option>
-          <option value="5">Very High </option>
+          <option value="1.5">Rest</option>
+          <option value="3">Low</option>
+          <option value="4.5">Moderate </option>
+          <option value="6">High </option>
+          <option value="7.5">Very High </option>
           </optgroup>
         </select>
         <i 

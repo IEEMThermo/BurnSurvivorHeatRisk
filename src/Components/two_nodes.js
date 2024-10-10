@@ -302,10 +302,10 @@ export async function two_nodes(zipcode, met, clo, burn_surface, length_time_sim
     shade_sun =  parseInt(shade_sun);
 
     try{
-        let { tdb, tr, rh, v } = await fetchWeatherData(zipcode);
+        let { tdb, tr, rh, v, isDaytime } = await fetchWeatherData(zipcode);
 
         // If user is in direct sun
-        if (shade_sun === 2) {
+        if (shade_sun === 2 && isDaytime) {
             tr += 30;
         }
 
@@ -354,14 +354,14 @@ export function two_nodes_forecast(array, met, clo, burn_surface, length_time_si
     length_time_simulation = parseInt(length_time_simulation);
     shade_sun = parseInt(shade_sun);
 
-    
         let tdb = array[0];
         let tr = array[1];
         let rh = array[2];
         let v = array[3];
+        let isDaytime = array[4]
 
         // If user is in direct sun
-        if (shade_sun === 2) {
+        if (shade_sun === 2 && isDaytime) {
             tr += 30;
         }
 
@@ -420,14 +420,27 @@ export async function fetchWeatherData(zipcode) {
   return axios.get(url)
     .then(response => {
       const data = response.data;
+        //find sunrise/ sunset times
+        let sunrise = data.sys.sunrise;
+        let sunset = data.sys.sunset;
+        //add to unix time stamp to account for next day sunrise/sunset
+        let day = 86400;
+        let isDaytime = false;
 
       // Extracting the required weather data
       const tdb = data.main.temp - 273.15;
       const tr = data.main.temp - 273.15;
       const rh = data.main.humidity;
       const v = data.wind.speed;
-      
-      return { tdb, tr, rh, v };
+      const dt = data.dt;
+           //during daylight today
+           if (dt > sunrise && dt < sunset){
+            isDaytime = true;
+            //during daylight tomorrow 
+          } else if (dt > (sunrise + 86400) && dt < (sunset + 86400)){
+            isDaytime = true;
+          }
+      return { tdb, tr, rh, v, isDaytime };
     })
     .catch(error => {
       console.error('Error:', error);
@@ -451,6 +464,11 @@ export async function fetchForecastData(zipcode) {
       .then(response => {
   
       const data = response.data;
+        //find sunrise/ sunset times
+        let sunrise = data.city.sunrise;
+        let sunset = data.city.sunset;
+        //add to unix time stamp to account for next day sunrise/sunset
+        let day = 86400;
   
       for (let i = 0; i < 8; i++){
           forecast[i] = new Array(5);
@@ -458,7 +476,15 @@ export async function fetchForecastData(zipcode) {
           forecast[i][1] = data.list[i].main.temp - 273.15;
           forecast[i][2] = data.list[i].main.humidity;
           forecast[i][3] = data.list[i].wind.speed;
-          forecast[i][4] = data.list[i].dt_txt;
+            //during daylight today
+            if (data.list[i].dt > sunrise && data.list[i].dt < sunset){
+                forecast[i][4] = true;
+                //during daylight tomorrow 
+              } else if (data.list[i].dt > (sunrise + 86400) && data.list[i].dt < (sunset + 86400)){
+                forecast[i][4] = true;
+              } else {
+                forecast[i][4] = false;
+              }
         }
         
         return forecast;

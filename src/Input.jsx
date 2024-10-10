@@ -216,7 +216,7 @@ function Calculate() {
     let body_surface_area = 0.007184 * Math.pow(height, 0.725) * Math.pow(weight, 0.425);
     let resultNum = await two_nodes(coord, value2, value3, value4, value5, value6, body_surface_area, weight);
 
-    console.log(resultNum);
+    //console.log(resultNum);
     setTCore(resultNum);
 
     let resultColor = getColor(resultNum);
@@ -248,7 +248,7 @@ function Calculate() {
       forecastResult[0] = await two_nodes(coord, value2, value3, value4, value5, value6, body_surface_area, weight);
 
       for (let i = 0; i < 7; i++){
-        for (let j = 0; j < 4; j++){
+        for (let j = 0; j < 5; j++){
           forecastParameters[j] = forecastData[i][j];
         }
 
@@ -328,7 +328,7 @@ function Calculate() {
 
         // Get the color data at the specified y-coordinate
         const yInTempCanvas = tempCanvas.height - (y - 36.5)/4 * tempCanvas.height;
-        console.log(yInTempCanvas + " " + tempCanvas.height)
+        //console.log(yInTempCanvas + " " + tempCanvas.height)
         const imageData = tempCtx.getImageData(0, yInTempCanvas, 1, 1).data;
         return `rgba(${imageData[0]}, ${imageData[1]}, ${imageData[2]}, ${imageData[3] / 255})`;
       };
@@ -393,7 +393,7 @@ function Calculate() {
           id: 'backgroundPlugin',
           beforeDraw: (chart) => {
             const { ctx, chartArea: { top, bottom, left, right } } = chart;
-            console.log(bottom);
+            //console.log(bottom);
             createGradient(ctx, chart.chartArea);
             ctx.save();
             ctx.fillStyle = gradient;
@@ -406,7 +406,7 @@ function Calculate() {
       const yValue = data[0];
       const gradientColor = getGradientColorAtY(yValue, chartInstanceRef.current.chartArea);
       setGradientColor(gradientColor);
-      console.log(`Gradient color at y=${yValue}: ${gradientColor}`);
+      //console.log(`Gradient color at y=${yValue}: ${gradientColor}`);
     }
   }, [label, data]);
 

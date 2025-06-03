@@ -93,47 +93,57 @@ input[type="text"],
 i.fa-magnifying-glass {
   pointer-events: none;
 }
-
 i.fa-ruler {
   pointer-events: none;
 }
-
 i.fa-weight-scale {
   pointer-events: none;
 }
-
 i.fa-person-running {
   pointer-events: none;
 }
-
 i.fa-shirt {
   pointer-events: none;
 }
-
 i.fa-person  {
   pointer-events: none;
 }
-
 i.fa-cloud-sun {
   pointer-events: none;
 }
-
 i.fa-clock {
   pointer-events: none;
 }
 
 .height-unit, 
 .weight-unit{
+  display: inline-flex; 
+  align-items: center;
   background-color: #17699d;
   color: #f4f4f4;
   font-size: 20px;
-  padding: 10px;
-  width: 60px;
+  gap: 4px;     
+  padding: 8px 24px 8px 16px; 
   border: none;
-  border-radius: 10%;
+  border-radius: 6px;
   cursor: pointer;
   margin-right: 20%;
 }
+
+.height-unit i.fa-solid,
+.weight-unit i.fa-solid {
+  position: relative;
+  left: 10px;
+  font-size: 16px;
+  color: #fff;
+  transition: transform 0.2s ease;
+}
+
+.height-unit:hover i.fa-solid,
+.weight-unit:hover i.fa-solid{
+  transform: rotate(180deg);
+} 
+
 .hover-text {
   position: absolute;
   padding: 10px;

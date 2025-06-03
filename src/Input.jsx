@@ -566,7 +566,7 @@ function Calculate() {
           <input
             type="text"
             id="height_input"
-            placeholder="Enter Height"
+            placeholder={`Enter Weight ${heightUnit ? '(cm)' : '(in)'}`}
             value={value7}
             onChange={(e) => setValue7(e.target.value)}
           />
@@ -578,6 +578,7 @@ function Calculate() {
           className={`height-unit ${heightUnit ? 'cm' : 'in'}`}
         >
           {heightUnit ? 'cm' : 'in'} 
+          <i class="fa-solid fa-right-left"></i>
         </button>
       </div>
       {isHover === 1 && (
@@ -601,7 +602,7 @@ function Calculate() {
           <input
             type="text"
             id="weight_input"
-            placeholder="Enter Weight"
+            placeholder={`Enter Weight ${weightUnit ? '(kg)' : '(lbs)'}`}
             value={value8}
             onChange={(e) => setValue8(e.target.value)}
           />
@@ -613,6 +614,7 @@ function Calculate() {
           className={`weight-unit ${weightUnit ? 'kg' : 'lbs'}`}
         >
           {weightUnit ? 'kg' : 'lbs'} 
+          <i class="fa-solid fa-right-left"></i>
         </button>
       </div>
       

@@ -6,15 +6,18 @@ import { useResultColor } from './Components/ResultColorContext';
 import RecommendationsToggle from './Components/RecommendationsToggle';
 //import './css/ToggleBar.css';
 import { Collapse } from 'react-collapse';
+import Welcome from './Components/Welcome';
 import HelpPopup from './Components/HelpPopup';
 import HelpPopupClothing from './Components/HelpPopupClothing';
 import HelpPopupMet from './Components/HelpPopupMet';
-import { Line } from 'react-chartjs-2';
 import {Chart, registerables} from 'chart.js'; 
 import citiesData from './cities.json';
+import { use } from 'react';
 
 //Function responsible for displaying all the input boxes, and calculate functions
 function Calculate() {
+  // welcome message state variable
+  const [showWelcome, setShowWelcome] = useState(true);
   // input value state variables
   const [value2, setValue2] = useState('');
   const [value3, setValue3] = useState('');
@@ -83,6 +86,18 @@ function Calculate() {
   const scaledYellow = Array(8).fill(38);
   const scaledOrange = Array(8).fill(38.5);//split here >=
   const scaledRed = Array(8).fill(39);
+
+  useEffect(() => {
+    const hasAccepted = sessionStorage.getItem("disclaimerAccepted");
+    if (hasAccepted === "true") {
+      setShowWelcome(false);
+    }
+  }, []);
+
+  const handleAccept = () => {
+    sessionStorage.setItem("disclaimerAccepted", "true");
+    setShowWelcome(false);
+  };
 
   useEffect(() => {
     // Set cityList with the imported JSON data
@@ -508,7 +523,9 @@ function Calculate() {
 
 
   return (
-    <div>
+  <>
+    {showWelcome && <Welcome onAccept={handleAccept} />}  
+    <div className={"calculate-container" + (showWelcome ? " blurred" : "")}>
       <div className='inputBox'>
         <div className='city_container' style={cursorStyle}>
           <div className="search-container">
@@ -758,8 +775,8 @@ function Calculate() {
           </div>
         </div>
       )}
-      
-  </div>
+    </div>
+  </>
   );
 }
 

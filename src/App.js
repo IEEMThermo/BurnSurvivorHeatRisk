@@ -7,7 +7,6 @@ import Calculate from './Input';
 import ReactDOM from 'react-dom';
 import { ResultColorProvider } from './Components/ResultColorContext';
 import Acknowledgements from './Components/Acknowledgements'; // Import the Acknowledgements component
-import Welcome from './Components/Welcome';
 import Privacy from './Components/Privacy';
 import Disclaimer from './Components/Disclaimer';
 import ReferrerButton from './Components/ReferrerButton';
@@ -19,25 +18,9 @@ function MainApp() {
       <div>
         <Header />
         <Routes>
-          {/* Route for Welcome Page */}
-          <Route 
-            path="/" 
-            element={
-              <>
-                <Helmet>
-                  <title> Heat Risk Calculator</title>
-                  <meta name="description" content="A tool to inform burn survivors of heat related risk while performing physical activity and estimates the risk of overheating." />
-                  <link rel="canonical" href="https://burnsurvivorheatrisk.org" />
-                </Helmet>
-                <ReferrerButton />
-                <Welcome />
-              </>
-            } 
-          />
-          
           {/* Route for Main Page */}
           <Route
-            path="/main"
+            path="/"
             element={
               <>
                 <Helmet>

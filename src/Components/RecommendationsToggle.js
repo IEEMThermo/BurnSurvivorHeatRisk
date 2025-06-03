@@ -10,7 +10,7 @@ import { ReactComponent as Fan } from '../SVG/fan.svg';
 import { ReactComponent as Shirt } from '../SVG/shirt.svg';
 import { ReactComponent as Stop } from '../SVG/stop.svg';
 import { ReactComponent as Pause } from '../SVG/pause.svg';
-
+ 
 function RecommendationsToggle() {
   const { resultColor } = useResultColor();
 
@@ -23,7 +23,7 @@ function RecommendationsToggle() {
     ],
     'Red: \n Unsafe exposure. Extreme Caution.': [
       { type: 'icon', content: <Stop /> },
-      { type: 'text', content: '  Consider suspending activity until outside temperatures are cooler or move indoors.' },
+      { type: 'text', content: '  Consider suspending activity until outside temperatures are cooler or move indoors to air conditioned space.' },
     ],
     'Yellow: \n Caution, regularly hydrate.': [
       

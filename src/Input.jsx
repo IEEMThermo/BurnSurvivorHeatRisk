@@ -12,7 +12,6 @@ import HelpPopupClothing from './Components/HelpPopupClothing';
 import HelpPopupMet from './Components/HelpPopupMet';
 import {Chart, registerables} from 'chart.js'; 
 import citiesData from './cities.json';
-import { use } from 'react';
 
 //Function responsible for displaying all the input boxes, and calculate functions
 function Calculate() {
@@ -51,6 +50,8 @@ function Calculate() {
   const [weightUnit, changeWeightUnit] =  useState(false);
   const [isHover, setHover] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [heightError, setHeightError] = useState('');
+  const [weightError, setWeightError] = useState('');
 
   //graph state variables
   const [label, setLabel] = useState('');
@@ -169,13 +170,72 @@ function Calculate() {
     setQuery(searchResults[item]);
   };
 
-  //function to change units
-  const toggleHeightUnit = () => {
-    changeHeightUnit(!heightUnit);
+  // live-validate height and weight inputs
+  // on height input chanage
+const handleHeightChange = (newText, unit) => {
+  // immediately update the input value useState variable and clear any previous errors 
+  setValue7(newText);
+  setHeightError('');
+  // parse a float from the new text input and validate input
+  const parsed = parseFloat(newText);
+  if (newText === '' || isNaN(parsed)) {
+    return;
   }
-  const toggleWeightUnit = () => {
-    changeWeightUnit(!weightUnit);
+  // check the appropriate unit range:
+  if (unit) {
+    // User has “cm” selected → valid range is 105 – 240 cm
+    if (parsed < 105 || parsed > 240) {
+      // Suggest they may have meant inches
+      setHeightError(`${parsed} cm is an invalid height.`);
+    }
+  } else {
+    // User has “inches” selected → valid range is 48 – 96 in
+    if (parsed < 48 || parsed > 96) {
+      setHeightError(`${parsed} in is an invalid height.`);
+    }
   }
+};
+
+// Live‐validate weight as the user types
+const handleWeightChange = (newText, unit) => {
+  setValue8(newText);
+  setWeightError('');
+
+  const parsed = parseFloat(newText);
+  if (newText === '' || isNaN(parsed)) {
+    return;
+  }
+
+  if (unit) {
+    // “kg” selected → valid 35 – 200 kg
+    if (parsed < 35 || parsed > 200) {
+      setWeightError(`${parsed} kg is an invalid weight.`);
+    }
+  } else {
+    // “lbs” selected → valid 80 – 450 lbs
+    if (parsed < 80 || parsed > 450) {
+      setWeightError(`${parsed} lbs is an invalid weight.`);
+    }
+  }
+};
+
+//function to change units
+const toggleHeightUnit = () => {
+  changeHeightUnit(prev => {
+    const newUnit = !prev;
+    // Once the unit flips, re-validate the current height text
+    handleHeightChange(value7, newUnit);
+    return newUnit;
+  });
+};
+
+const toggleWeightUnit = () => {
+  changeWeightUnit(prev => {
+    const newUnit = !prev;
+    handleWeightChange(value8, newUnit);
+    return newUnit;
+  });
+};
 
   const onMouseEnter = (val, event) => {
     let newVal = val
@@ -486,13 +546,13 @@ function Calculate() {
     // Check if value4 (Burn Surface Area) is not selected
     if (isNaN(value4) || value4 < 1 || value4 > 100 || !value4) {
       // Display an alert
-      window.alert("Enter a valid Burn Surface Area between 1 and 100. Do not include the % symbol.");
+      window.alert("Enter a Burn Surface Area between 1 and 100. Do not include the % symbol.");
       return; 
     }
     // Check if value5 (Duration) is not selected
     if (isNaN(value5) || value5 < 1 || !value5) {
       // Display an alert
-      window.alert("Enter a valid Duration of Activity.");
+      window.alert("Enter a Duration of Activity.");
       return; 
     }
     // Check if value6 (Activity Environemnt) is not selected
@@ -503,12 +563,12 @@ function Calculate() {
     }
     if (isNaN(value7) || !value7) {
       // Display an alert
-      window.alert("Enter a valid value for Height.");
+      window.alert("Enter a value for Height.");
       return; 
     }
     if (isNaN(value8) || !value8) {
       // Display an alert
-      window.alert("Enter a valid value for Weight.");
+      window.alert("Enter a value for Weight.");
       return; 
     }
 
@@ -566,21 +626,31 @@ function Calculate() {
           <input
             type="text"
             id="height_input"
-            placeholder={`Enter Weight ${heightUnit ? '(cm)' : '(in)'}`}
+            className = {heightError ? 'error' : ''}
+            placeholder={`Enter Height ${heightUnit ? 'cm (Norm: 140 - 210 cm)' : 'in (Norm: 55 - 84 in)'}`}
             value={value7}
-            onChange={(e) => setValue7(e.target.value)}
+            onChange={(e) => handleHeightChange(e.target.value, heightUnit)}
           />
-        <i className="fa-solid fa-ruler"></i>
-        <button
-          onClick={toggleHeightUnit} 
-          onMouseEnter={(event) => onMouseEnter(1, event)}
-          onMouseLeave={onMouseLeave}
-          className={`height-unit ${heightUnit ? 'cm' : 'in'}`}
-        >
-          {heightUnit ? 'cm' : 'in'} 
-          <i class="fa-solid fa-right-left"></i>
-        </button>
+
+          <i className="fa-solid fa-ruler"></i>
+          <button
+            onClick={toggleHeightUnit} 
+            onMouseEnter={(event) => onMouseEnter(1, event)}
+            onMouseLeave={onMouseLeave}
+            className={`height-unit ${heightUnit ? 'cm' : 'in'}`}
+          >
+            {heightUnit ? 'cm' : 'in'} 
+            <i class="fa-solid fa-right-left"></i>
+          </button>
       </div>
+      
+      {heightError && (
+        <div className="height-error-wrapper">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <span className="error-text">{heightError}</span>
+        </div>
+      )}
+
       {isHover === 1 && (
           <div 
             className="hover-text"
@@ -602,10 +672,12 @@ function Calculate() {
           <input
             type="text"
             id="weight_input"
-            placeholder={`Enter Weight ${weightUnit ? '(kg)' : '(lbs)'}`}
+            className = {weightError ? 'error' : ''}
+            placeholder={`Enter Weight ${weightUnit ? 'kg (Norm: 40 - 135 kg)' : 'lbs (Norm: 85 - 300 lbs)'}`}
             value={value8}
-            onChange={(e) => setValue8(e.target.value)}
+            onChange={(e) => handleWeightChange(e.target.value, weightUnit)}
           />
+
         <i className="fa-solid fa-weight-scale"></i>
         <button
           onClick={toggleWeightUnit} 
@@ -618,6 +690,13 @@ function Calculate() {
         </button>
       </div>
       
+      {weightError && (
+        <div className="weight-error-wrapper">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <span className="error-text">{weightError}</span>
+        </div>
+      )}
+
       {isHover === 2 && (
           <div 
             className="hover-text"

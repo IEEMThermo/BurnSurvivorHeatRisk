@@ -9,7 +9,7 @@
   bottom: 0;
 }
 
-.footer a {
+.footer a, .footer .welcome-page-link{
   display: block;
 }
 

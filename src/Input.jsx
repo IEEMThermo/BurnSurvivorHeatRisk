@@ -73,10 +73,8 @@ function Calculate() {
   const helpTextBurnSurface = `Provide a value between 1 and 100 that represents the percentage of body surface area burn.
                              <br>
                               Do not include the % symbol.
-                              <br> <br>
-                              If you are unsure of your burn surface area, visit one of these resources to estimate that area: <br>
                               <br>
-                              <a href="https://www.burn-app.com/" target="_blank">Estimate Burn Surface Area Website</a>\n <br>
+                              <br> If you are unsure of your burn surface area, visit one of these resources to estimate that area: <br>
                               <a href="https://burn.med.jhmi.edu/" target="blank">Estimate Burn Surface Area App</a>`;
   
   //cursor 
@@ -580,7 +578,6 @@ const toggleWeightUnit = () => {
     setScrollToTop(true); 
 
   }
-
 
   return (
   <>

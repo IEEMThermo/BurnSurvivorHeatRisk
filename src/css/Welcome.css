@@ -23,33 +23,36 @@
 }
 
 .welcome-container h1 {
+  margin-bottom: 40px;
   font-size: 32px;
-  margin-bottom: 24px;
+  color: #000;
 }
 
 .welcome-message,
 .welcome-message2 {
   font-size: 18px;
   line-height: 1.6;
+  color: #000;
   margin-bottom: 16px;
 }
 
 .welcome-message2 {
   font-weight: bold;
   margin-top: 12px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
-.welcome-button {
-  padding: 14px 28px;
+.welcome-container .welcome-button {
+  padding: 18px 28px;
   font-size: 16px;
   cursor: pointer;
   background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 8px;
-  margin-bottom: 32px;
   transition: transform 0.2s;
+  margin-bottom: 24px;
+  margin-top: 24px;
 }
 
 .welcome-button:hover {
@@ -58,8 +61,9 @@
 }
 
 .welcome-message3 {
-  font-size: 9px;
+  font-size: 8px;
   font-weight: bold;
   line-height: 1.4;
   margin-top: 8px;
+  color: #000;
 }

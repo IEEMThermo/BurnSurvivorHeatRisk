@@ -144,27 +144,25 @@ i.fa-clock {
   transform: rotate(180deg);
 } 
 
-/* Insert this at the very bottom of Input.css so nothing overrides it */
-
 .height-error-wrapper,
 .weight-error-wrapper {
-  display: flex;                /* or block—either is fine now that it's outside a flex row */
+  display: flex;               
   justify-content: center;      /* center the span horizontally under the input */
   width: 100%;
 }
 
 .height-error-wrapper .error-text,
 .weight-error-wrapper .error-text {
-  color: #cc0000;               /* a solid red that stands out on white */
+  color: #cc0000;           
   font-size: 12px;
-  line-height: 1.2;             /* normal spacing, so text is not stretched off-screen */
+  line-height: 1.2;         
 }
 
 .height-error-wrapper i.fa-solid,
 .weight-error-wrapper i.fa-solid {
-  color: #cc0000;               /* match the error text color */
-  margin-right: 5px;            /* space between icon and text */
-  font-size: 14px;              /* slightly larger than the text for visibility */
+  color: #cc0000;              
+  margin-right: 5px;            
+  font-size: 14px;            
 }
 
 .hover-text {
@@ -412,16 +410,24 @@ i.fa-clock {
   .met-help-button,
   .clo-help-button,
   .burnsurface-help-button{
-    margin-right: 13.5%;
+    margin-right: 12%;
     font-size: 18px;
   }
   .height-unit,
   .weight-unit{
-    margin-right: 12%;
-    font-size: 18px;
-    padding: 10px;
-    width: 48px;
+    margin-right: 10%;
+    gap: 2px;    
+    font-size: 14px;
+    padding: 6px 6px 6px 6px; 
   }
+
+    .height-unit i.fa-solid,
+    .weight-unit i.fa-solid {
+      position: relative;
+      margin-right: 12px;
+      font-size: 12px;
+    }
+
   .result-box,
    .Green,
    .Orange,

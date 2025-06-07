@@ -1,16 +1,23 @@
 // Footer.js
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import Welcome from './Welcome';
 import '../css/Footer.css'; // Import the CSS file
 
 function Footer() {
+  const [showWelcome, setShowWelcome] = useState(false);
+
   return (
     <footer className="footer">
       <div className="footer-content">
         <p>
-          <Link to= "/" className= "welcome-page-link">
+          <button 
+            onClick={() => setShowWelcome(true)} 
+            className="welcome-page-link"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, font: 'inherit'}}
+          >
             Click to View Welcome Page
-          </Link>
+          </button>
         </p>
         <a href="https://www.phoenix-society.org" target="_blank" rel="noopener noreferrer" className="resource-link">
           Click to View Additional Resources for Burn Survivors
@@ -32,6 +39,7 @@ function Footer() {
             Click to View Privacy Policy
         </Link>
       </div>
+      {showWelcome && <Welcome onAccept={() => setShowWelcome(false)} />}
     </footer>
   );
 }

@@ -67,3 +67,31 @@
   margin-top: 8px;
   color: #000;
 }
+
+@media screen and (max-width: 530px) {
+  .welcome-overlay {
+    padding-top: 10px;
+  }
+
+  .welcome-container {
+    padding: 16px 12px;
+
+  }
+
+  .welcome-container h1 {
+    font-size: 24px;
+    margin-bottom: 24px;
+
+  }
+
+  .welcome-message,
+  .welcome-message2 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .welcome-button {
+    padding: 14px 24px;
+    font-size: 14px;
+  }
+}
